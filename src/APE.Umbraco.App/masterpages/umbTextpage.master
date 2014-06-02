@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/umbMaster.master" AutoEventWireup="true" %>
+<asp:content contentplaceholderid="cp_content" runat="server">
+
+    <div id="page-bgtop">
+      <div id="content">
+        <div class="post">
+          <h2 class="title"><span><umbraco:item runat="server" field="pageName"></umbraco:item></span></h2>
+          <div id="test" style="color:white;">woop woop hejhje</div>
+           <div class="entry">
+              <umbraco:item runat="server" field="bodyText"></umbraco:item>
+         
+           </div>
+        </div>
+      </div>
+      <!-- end div#content -->  
+  
+      <div id="sidebar">
+          <umbraco:macro alias="umb2ndLevelNavigation" runat="server"></umbraco:macro>
+      </div>
+      <!-- end div#sidebar -->
+      <div style="clear: both; height: 1px"></div>
+    </div>
+  
+
+
+</asp:content>

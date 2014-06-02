@@ -1,0 +1,136 @@
+<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+<asp:content contentplaceholderid="ContentPlaceHolderDefault" runat="server">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Title      : Sandstone
+Version    : 1.0
+Released   : 20091109
+Description: A two-column fixed-width template suitable for small websites.
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="head" runat="server">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<asp:ContentPlaceHolder Id="HeadContent" runat="server">
+  </asp:ContentPlaceHolder>
+  
+  <!-- META Tag Macro -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="imagetoolbar" content="false" /> 
+   <!--Styles-->
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" media="screen"/>
+
+  <!--Scrips-->  
+  <script type="text/javascript" src="/scripts/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="/scripts/jquery.cycle.all.min.js"></script>
+  <script type="text/javascript">
+$(document).ready(function(){
+    /* Dots Slider 1 */
+    $(function(){
+      $('#imageSlider')
+      .after('<div id="imageSliderNav">')
+      .cycle({
+        fx:  'fade',
+        speed:  1550,
+        timeout: 8000, 
+        pager:  '#imageSliderNav'
+      });
+  });
+});
+</script>
+
+</head>
+<body class="t">
+
+  
+    <div id="logo" style="display:none">
+      <h1><a href="/"><umbraco:item runat="server" field="siteName" recursive="true"></umbraco:item></a></h1>
+    </div>
+
+  
+ <div id="page">
+  <div id="header">
+    <a href="/"><img src="/images/logo.gif" width="259" height="65" /></a>
+    <div id="sitedescription">
+      <h1>Runway</h1>
+      <h1>Off to a great start</h1>
+    </div>
+    <div id="mainmenu">
+            <umbraco:Macro Alias="umbTopNavigation" runat="server"></umbraco:Macro>
+    </div>
+    <div class="mainmenucorner">&nbsp;</div>
+  </div>
+<asp:contentplaceholder id="cp_top" runat="server">
+  </asp:contentplaceholder>
+
+   
+ <div id="content">
+
+        <div id="leftcontent">
+          <form id="RunwayMasterForm" runat="server">
+           <asp:contentplaceholder id="cp_content" runat="server"></asp:contentplaceholder>
+          </form>
+                
+        </div>
+        <div id="rightcontent">
+           <div class="hotspot">
+             <h4>Edit the right column</h4>
+             <img src="/images/icons/dezinerfolio/info.png" width="52" height="52"/>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas leo lectus, iaculis a laoreet in, lobortis in ligula. Proin in diam elit. Nulla facilisi. </p>
+            <a href="#">Find more packages</a>
+           </div>
+           <div class="hotspot">
+             <h4>Create your own Macros and unleash the power of XSLT </h4>
+             <img src="/images/icons/dezinerfolio/info.png" width="52" height="52"/>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas leo lectus, iaculis a laoreet in, lobortis in ligula. Proin in diam elit. Nulla facilisi. </p>
+            <a href="#">Using XSLT</a>
+           </div>
+        </div>
+    
+  </div>
+  <div id="footer">
+    <div id="footermenu">
+          <h4>Navigation</h4>
+           <umbraco:Macro Alias="umbTopNavigation" runat="server"></umbraco:Macro>
+    </div>  
+    <div id="footershare">
+           <h4>Share/Social</h4>
+      <ul>
+        <li><a href="/company-news.aspx"><img src="images/icons/social_twitter.png" width="28" height="22" />Twitter</a></li>
+        <li><a href="/company-blog.aspx"><img src="images/icons/social_facebook.png" width="28" height="22" />Facebook</a></li>
+        <li><a href="/about.aspx"><img src="images/icons/social_linkedin.png" width="28" height="22" />Linkedin</a></li>
+        <li><a href="/contact-us.aspx"><img src="images/icons/social_su.png" width="28" height="22" />Stumpled upon</a></li>
+      </ul>
+    </div>  
+    <div id="footercontact">
+           <h4>Contact information</h4>
+            Company Name<br />
+            918 East Test Rd.
+            Test, WA 99206, USA<br />
+            
+            <br />Telephone: +0 123 456 789
+            <br />Email: <a href="mailto:email@example.com">email@example.com</a>
+    </div>
+    <div id="footerabout">
+           <h4>About us</h4>
+            You can edit these texts directly in the templates<br /><br />
+      Umbraco provides a full-featured web content management system that is easy to use, simple to customize, and robust enough to run the largest sites
+    </div>  
+    <div id="footer-end">
+          Powered by <a href="http://umbraco.org" title="Umbraco - The open source ASP.NET CMS">Umbraco</a> | Skin created by <a href="http://www.mediaworkers.dk" title="Umbraco Solution Provider">Mediaworkers</a>
+    </div>   
+   
+   
+    
+
+</div>
+<!-- end div#wrapper -->
+</body>
+</html>
+</asp:content>

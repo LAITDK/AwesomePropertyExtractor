@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin>
+  <Name>Umedia</Name>
+  <Author>Mediaworkers</Author>
+  <Version>1.0</Version>
+  <Description><![CDATA[Skin by mediaworkers]]></Description>
+
+
+  <AllowedRootTemplate>umbBusinessHomepage</AllowedRootTemplate>
+
+  <Dependencies>
+    <Dependency type="Color" label="background color">
+      <Properties>
+        <Output>#333440</Output>
+      </Properties>
+      <Tasks>
+        <Task type="ModifyCss">
+          <TargetFile>Custom.css</TargetFile>
+          <TargetRule>body</TargetRule>
+          <TargetParameter>background-color</TargetParameter>
+          <Value>${Output}</Value>
+        </Task>
+      </Tasks>
+    </Dependency>
+    <Dependency type="Color" label="Primary background">
+      <Properties>
+        <Output>#ec008c</Output>
+      </Properties>
+      <Tasks>
+        <Task type="ModifyCss">
+          <TargetFile>Custom.css</TargetFile>
+          <TargetRule>.newsbox .feedList h4 a, #sitedescription h1, a</TargetRule>
+          <TargetParameter>color</TargetParameter>
+          <Value>${Output}</Value>
+        </Task>
+        <Task type="ModifyCss">
+          <TargetFile>Custom.css</TargetFile>
+          <TargetRule>.primary-bgcolor, a.ui-btn-big, .newsbox .feedList h4 a:hover, #slider #imageSliderNav a.activeSlide</TargetRule>
+          <TargetParameter>background-color</TargetParameter>
+          <Value>${Output}</Value>
+        </Task>
+      </Tasks>
+    </Dependency>
+    <Dependency type="Color" label="Secondary background">
+      <Properties>
+        <Output>#22212C</Output>
+      </Properties>
+      <Tasks>
+        <Task type="ModifyCss">
+          <TargetFile>Custom.css</TargetFile>
+          <TargetRule>#header #mainmenu ul, #header #mainmenu ul li</TargetRule>
+          <TargetParameter>background-color</TargetParameter>
+          <Value>${Output}</Value>
+        </Task>
+        <Task type="ModifyCss">
+          <TargetFile>Custom.css</TargetFile>
+          <TargetRule>#header #mainmenu ul li.home a</TargetRule>
+          <TargetParameter>color</TargetParameter>
+          <Value>${Output}</Value>
+        </Task>
+      </Tasks>
+    </Dependency>
+    <Dependency type="Text" label="Enter slider timeout in sec">
+      <Properties>
+        <Output>1</Output>
+      </Properties>
+      <Tasks>
+        <Task type="ModifyTemplate">
+          <TargetFile>umbMaster.master</TargetFile>
+          <TargetID>slider</TargetID>
+          <TargetAttribute>value</TargetAttribute>
+          <Value>${Output}</Value>
+        </Task>
+      </Tasks>
+    </Dependency>
+  </Dependencies>
+
+</Skin>

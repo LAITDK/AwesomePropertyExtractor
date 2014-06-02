@@ -1,0 +1,14 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/umbMaster.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="cp_content" runat="server">
+  <div id="content" class="frontPage">
+    <umbraco:Item runat="server" field="bodyText"/>
+    
+    
+    <umbraco:Macro Alias="umbBusinessFrontpageNews" runat="server"></umbraco:Macro>
+    
+    <umbraco:Macro Alias="umbBusinessFrontpageBlog" runat="server"></umbraco:Macro>
+    
+    <h3>Business news</h3>
+    <umbraco:Macro feedUrl="http://feeds.reuters.com/reuters/technologyNews" numberOfItems="5" excerptLength="120" Alias="umbFeedViewer" runat="server"></umbraco:Macro>
+  </div>
+</asp:Content>

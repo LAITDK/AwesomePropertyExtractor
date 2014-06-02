@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APE.Umbraco.App", "APE.Umbraco.App\APE.Umbraco.App.csproj", "{E1D4EA92-4661-48E4-A451-DCD63814FCAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APE.Umbraco", "APE.Umbraco\APE.Umbraco.csproj", "{21EAD795-BF69-481E-97E3-D5139941839A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1D4EA92-4661-48E4-A451-DCD63814FCAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D4EA92-4661-48E4-A451-DCD63814FCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D4EA92-4661-48E4-A451-DCD63814FCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D4EA92-4661-48E4-A451-DCD63814FCAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21EAD795-BF69-481E-97E3-D5139941839A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21EAD795-BF69-481E-97E3-D5139941839A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21EAD795-BF69-481E-97E3-D5139941839A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21EAD795-BF69-481E-97E3-D5139941839A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

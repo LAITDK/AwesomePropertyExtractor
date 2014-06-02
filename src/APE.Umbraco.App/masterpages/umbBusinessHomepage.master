@@ -1,0 +1,68 @@
+<%@ Master Language="C#" MasterPageFile="~/masterpages/umbMaster.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderId="cp_top" runat="server">
+ <div id="slider">
+    <div id="imageSlider">
+          <div class="imageSlide">
+              <div class="imageSliderInfo">
+                  <h2>You can (of course)<br />change these images! </h2>
+                    <p>When you installed this skin, we added a new node to your content area called "frontpage slider", go there to change the image, text and link in this slider</p>
+                    <a class="ui-btn ui-btn-big" href="#">What colors?</a>
+                </div>
+                <div class="imageSliderImage">
+                  <img src="/images/tmp_img.jpg" width="500" height="320" />
+                </div>
+            </div>
+          <div class="imageSlide">
+              <div class="imageSliderInfo">
+                  <h2>And changing the colors <br />is easy as well!</h2>
+                    <p>Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                    <a class="/images/ui-btn ui-btn-big" href="#">About us</a>
+                </div>
+                <div class="imageSliderImage">
+                  <img src="/images/tmp_img2.jpg" width="500" height="320" />
+                </div>
+            </div>
+          <div class="imageSlide">
+              <div class="imageSliderInfo">
+                  <h2>Hello everybody!</h2>
+                    <p>Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                    <a class="ui-btn ui-btn-big" href="#">About us</a>
+                </div>
+                <div class="imageSliderImage">
+                  <img src="/images/tmp_img.jpg" width="500" height="320" />
+                </div>
+            </div>
+          <div class="imageSlide">
+              <div class="imageSliderInfo">
+                  <h2>New to Umbraco?</h2>
+                    <p>Well, you managed to install this skin, so you must have done something right! <br />
+<br />
+But still the umbraco developer site is the place to go for all your Umbraco needs!</p>
+                    <a class="ui-btn ui-btn-big" href="#">Visit Umbraco</a>
+                </div>
+                <div class="imageSliderImage">
+                  <img src="/images/tmp_img2.jpg" width="500" height="320" />
+                </div>
+            </div>
+        </div>
+  </div>
+</asp:Content>
+  
+  
+  
+<asp:Content ContentPlaceHolderID="cp_content" runat="server">
+ 
+            <umbraco:item id="Item1" runat="server" field="bodyText"></umbraco:item>
+
+             <umbraco:macro  alias="umbBusinessFrontpageNews" runat="server"></umbraco:macro>
+             <umbraco:macro alias="umbBusinessFrontpageBlog" runat="server"></umbraco:macro>
+
+              <h3>Business news</h3>
+            <umbraco:macro  feedurl="http://feeds.reuters.com/reuters/technologyNews" numberofitems="3" excerptlength="90" alias="umbFeedViewer" runat="server"></umbraco:macro>
+
+            
+ 
+ 
+
+</asp:Content>

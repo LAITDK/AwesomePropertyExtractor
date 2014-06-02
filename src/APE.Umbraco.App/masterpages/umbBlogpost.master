@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/umbMaster.master" AutoEventWireup="true" %>
+ 
+
+<asp:Content ContentPlaceHolderId="cp_head" runat="server">
+  <script type="text/javascript" src="/umbraco_client/ui/jquery.js"></script>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.5.5/jquery.validate.min.js"></script>
+</asp:Content>
+
+  
+<asp:Content ContentPlaceHolderID="cp_content" runat="server">
+
+<div id="page-bgtop">
+<div id="content" class="textpage">
+  
+<div class="hentry p1 post publish">
+<h2 class="entry-title title"><span><umbraco:Item field="pageName" runat="server"></umbraco:Item></span></h2>
+
+<div class="entry-date">
+    <abbr class="published" title='<umbraco:Item field="PostDate" formatAsDate="true" runat="server"></umbraco:Item>'>
+         <umbraco:Item field="PostDate" formatAsDate="true" runat="server"></umbraco:Item>
+    </abbr>
+</div>
+
+<div class="entry-content">
+<umbraco:Item field="bodyText" runat="server"></umbraco:Item>
+</div>
+
+<div class="entry-meta">
+This entry was written by <span class="author vcard"><spam class="fn n"><umbraco:Item field="writerName" runat="server"/></span></span>,
+posted on <abbr class="published" title='<umbraco:Item ID="Item1" field="PostDate" formatAsDate="true" runat="server"/>'><umbraco:Item field="PostDate" formatAsDate="true" runat="server"/></abbr>
+
+Bookmark the <a href='<umbraco:Item field="pageID" runat="server" xslt="umbraco.library:NiceUrl({0})"></umbraco:Item>' title="Permalink" rel="bookmark">permalink</a>.
+
+Follow any comments here with the
+<umbraco:Item field="pageID" runat="server" xslt="concat('&lt;a href=&quot;',umbraco.library:Replace(umbraco.library:NiceUrl({0}),'.aspx',''),'/commentrss.aspx','&quot; title=&quot;Comments RSS&quot; rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;&gt;','RSS feed for this post','&lt;/a&gt;')" xsltDisableEscaping="true" ></umbraco:Item>.
+    You can <a class="comment-link" href="#respond" title="Post a comment">post a comment</a>.
+</div>
+</div>
+
+<div id="related">
+<umbraco:Macro Alias="BlogpostRelatedPages" runat="server"></umbraco:Macro>
+</div>
+
+<div id="comments">
+<umbraco:Macro Alias="BlogPostListComments" runat="server"></umbraco:Macro>
+
+<div id="respond">
+<h3>Post a comment</h3>
+<div class="formcontainer">
+<umbraco:Macro Alias="frmBlogComment" runat="server"></umbraco:Macro>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="sidebar">
+     
+    
+      <umbraco:Macro Alias="umb2ndLevelNavigation" runat="server"></umbraco:Macro>
+</div>
+<div style="clear: both; height: 1px"></div>
+</div>
+</asp:Content>

@@ -185,3 +185,7 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
+src/APE.Umbraco.App/App_Data/TEMP/
+src/APE.Umbraco.App/install/
+src/packages/
+src/APE.Umbraco.App/App_Data/Logs/
