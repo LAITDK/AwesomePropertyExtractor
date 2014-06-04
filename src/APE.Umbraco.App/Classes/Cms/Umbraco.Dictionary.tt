@@ -45,7 +45,6 @@
 	var connectionSetting = config.ConnectionStrings.ConnectionStrings["umbracoDbDSN"];
 	
 	var manager = TemplateFileManager.Create(this);
-	manager.IsAutoIndentEnabled = true;
 	var dictionary = DBConnection.GetDictionary(dataDir,connectionSetting).ToList();
 
 

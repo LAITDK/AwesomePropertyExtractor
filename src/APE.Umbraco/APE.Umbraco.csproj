@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="PublishedContentExtensions.cs" />
     <Compile Include="UH.cs" />
+    <Compile Include="UmbracoId.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

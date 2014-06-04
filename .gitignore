@@ -189,3 +189,4 @@ src/APE.Umbraco.App/App_Data/TEMP/
 src/APE.Umbraco.App/install/
 src/packages/
 src/APE.Umbraco.App/App_Data/Logs/
+src/APE.Umbraco.App/Classes/Cms/*.cs
