@@ -16,7 +16,7 @@ namespace APE.Umbraco.Core
             return assembly.GetTypes()
                 .Where(type => type.IsClass)
                 .Where(type => type.IsSubclassOf(typeof(DocTypeProperty)))
-                .Where(x => x.CustomAttributes.Any(ca => ca.AttributeType == typeof(UmbracoId)));
+                .Where(x => x.CustomAttributes.Any(ca => ca.AttributeType == typeof(UmbracoPropertyIdAttribute)));
         }
 
         static Helpers()
@@ -30,7 +30,7 @@ namespace APE.Umbraco.Core
 
             foreach (var type in classes)
             {
-                foreach (var attribute in type.CustomAttributes.Where(x => x.AttributeType == typeof(UmbracoId)))
+                foreach (var attribute in type.CustomAttributes.Where(x => x.AttributeType == typeof(UmbracoPropertyIdAttribute)))
                 {
                     var id = attribute.ConstructorArguments.FirstOrDefault().Value.ToString().ToUpper();
                     TypeDictionary.Add(id, type);
