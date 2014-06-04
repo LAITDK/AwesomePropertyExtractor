@@ -185,6 +185,10 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
+#Solution specifics:
+!src/APE.Umbraco.App/App_Data/Umbraco.sdf
+
+src/APE.Umbraco.App/App_Data/umbraco.config
 src/APE.Umbraco.App/App_Data/TEMP/
 src/APE.Umbraco.App/install/
 src/packages/
