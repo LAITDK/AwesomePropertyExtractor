@@ -208,6 +208,9 @@
     <Compile Include="Classes\Cms\DateFolder.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Cms\SubPage.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Cms\UmbBlog.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>

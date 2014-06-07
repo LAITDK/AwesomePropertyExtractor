@@ -110,12 +110,13 @@ foreach(var docType in docTypes)
 {
 var docTypeKey = docType.Key.DocType;
 manager.StartNewFile(docTypeKey+".cs");
+var parentDocType = docTypes.FirstOrDefault(x => x.Key.DocTypeAlias == docType.Key.ParentDocType);
 #>
 using System;
 using APE.Umbraco;
 namespace <#= namespaceHint #>
 {
-    public partial class <#=docTypeKey#> <# if(!string.IsNullOrWhiteSpace(docType.Key.ParentDocType) && docTypes.Any(x => x.Key.DocType == docType.Key.ParentDocType)){ #>: <#=docType.Key.ParentDocType#><#} #>
+    public partial class <#=docTypeKey#> <# if(parentDocType != null){ #>: <#=parentDocType.Key.DocType #><#} #>
 
     {
 
