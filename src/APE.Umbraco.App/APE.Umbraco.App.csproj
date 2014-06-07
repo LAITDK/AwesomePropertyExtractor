@@ -208,9 +208,6 @@
     <Compile Include="Classes\Cms\DateFolder.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Cms\DictionaryKeys.cs">
-      <DependentUpon>Umbraco.Dictionary.tt</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Cms\UmbBlog.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>
@@ -229,6 +226,9 @@
     <Compile Include="Classes\Cms\Umbraco.Dictionary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Umbraco.Dictionary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\Umbraco.DictionaryKeys.cs">
       <DependentUpon>Umbraco.Dictionary.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\Cms\Umbraco.DocTypes.cs">

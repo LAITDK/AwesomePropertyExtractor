@@ -93,7 +93,7 @@ namespace <#= namespaceHint #>
 
 
 
-manager.StartNewFile("DictionaryKeys.cs");
+manager.StartNewFile("Umbraco.DictionaryKeys.cs");
 #>
 namespace <#= namespaceHint #>
 {

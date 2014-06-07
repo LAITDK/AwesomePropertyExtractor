@@ -10,17 +10,17 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Awesome Property Extractor, (APE), is a framework for extracting property values in a generic and simple way, primarily from umbraco and affiliated libraries.</description>
         <releaseNotes>Initial beta release</releaseNotes>
-        <copyright>2014 Lund &amp; Andresen IT</copyright>
+        <copyright />
         <tags>umbraco properties, property, T4, document types, doctype, cms</tags>
         <dependencies>
             <dependency id="UmbracoCms.Core" version="[6.0, 7.0)" />
         </dependencies>
     </metadata>
     <files>
-        <file src="..\APE.Umbraco.App\Classes\APE\FileManager.ttinclude" target="content\Classes\APE\FileManager.ttinclude" />
-        <file src="..\APE.Umbraco.App\Classes\Cms\Umbraco.Dictionary.tt" target="content\Classes\Cms\Umbraco.Dictionary.tt" />
-        <file src="..\APE.Umbraco.App\Classes\Cms\Umbraco.DocTypes.tt" target="content\Classes\Cms\Umbraco.DocTypes.tt" />
-        <file src="..\APE.Umbraco\bin\Debug\APE.Umbraco.dll" target="lib\APE.Umbraco.dll" />
+        <file src="..\src\APE.Umbraco.App\Classes\APE\FileManager.ttinclude" target="content\Classes\APE\FileManager.ttinclude" />
+        <file src="..\src\APE.Umbraco.App\Classes\Cms\Umbraco.Dictionary.tt" target="content\Classes\Cms\Umbraco.Dictionary.tt" />
+        <file src="..\src\APE.Umbraco.App\Classes\Cms\Umbraco.DocTypes.tt" target="content\Classes\Cms\Umbraco.DocTypes.tt" />
+        <file src="..\src\APE.Umbraco\bin\Debug\APE.Umbraco.dll" target="lib\APE.Umbraco.dll" />
         <file src="tools\install.ps1" target="tools\install.ps1" />
     </files>
 </package>
