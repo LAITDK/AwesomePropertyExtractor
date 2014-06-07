@@ -30,7 +30,7 @@
 
 
 	var code = new CodeGenerationTools(this);
-	var namespaceHint = code.VsNamespaceSuggestion();	
+	var namespaceHint = code.VsNamespaceSuggestion() ?? "blah";	
 
 	var hostServiceProvider = (IServiceProvider)this.Host;
 	var host = this.Host as ITextTemplatingEngineHost;
@@ -109,13 +109,16 @@ namespace <#= namespaceHint #>
 foreach(var docType in docTypes)
 {
 var docTypeKey = docType.Key.DocType;
+var parentDocType = docTypes.FirstOrDefault(x => x.Key.DocTypeAlias == docType.Key.ParentDocType);
+
 manager.StartNewFile(docTypeKey+".cs");
+
 #>
 using System;
 using APE.Umbraco;
 namespace <#= namespaceHint #>
 {
-    public partial class <#=docTypeKey#> <# if(!string.IsNullOrWhiteSpace(docType.Key.ParentDocType) && docTypes.Any(x => x.Key.DocType == docType.Key.ParentDocType)){ #>: <#=docType.Key.ParentDocType#><#} #>
+    public partial class <#=docTypeKey#> <# if(parentDocType != null){ #>: <#=parentDocType.Key.DocType #><#} #>
 
     {
 

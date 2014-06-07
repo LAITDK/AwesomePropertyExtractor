@@ -2,17 +2,15 @@
 
 @*
     Macro parameter to be set on the macro
-    Show:True   Alias:propertyAlias     Name:Property Alias    Type:Textstring
+    Alias:propertyAlias     Name:Property Alias    Type:Textbox
 *@   
-
 
 @{
     
     @* Get the property alias we want to filter on from the macro parameter *@
     var propertyAlias = Parameter.propertyAlias;
-    var selection = Model.Children.Where("Visible").OrderBy(propertyAlias)
+    var selection = Model.Children.Where("Visible").OrderBy(propertyAlias);
 }
-
 
 <ul>
     @foreach (var page in selection)

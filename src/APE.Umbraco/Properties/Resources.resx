@@ -121,6 +121,6 @@
     <value>SELECT [key] FROM [cmsDictionary]</value>
   </data>
   <data name="DocTypeSql" xml:space="preserve">
-    <value>select cpt.Alias as PropertyAlias, cpt.Description as PropertyDescription, cct.Alias as DocType,cct2.Alias as ParentDocType,un3.Text as PropertyType, cdt.controlId as propertyTypeId from umbracoNode un left join cmspropertytype cpt on un.id = cpt.contentTypeId left join cmsdatatype cdt on cpt.dataTypeId = cdt.nodeId inner join cmsContentType cct on un.id = cct.nodeId left join umbracoNode un2 on un2.id = un.parentID left join cmsContentType cct2 on un2.id = cct2.nodeId left join umbracoNode un3 on cpt.dataTypeId = un3.id where un.nodeObjectType = 'A2CB7800-F571-4787-9638-BC48539A0EFB'</value>
+    <value>select cpt.Alias as PropertyAlias, cpt.Description as PropertyDescription, cct.Alias as DocType,cct2.Alias as ParentDocType,un3.Text as PropertyType, cdt.propertyEditorAlias as propertyTypeId from umbracoNode un left join cmspropertytype cpt on un.id = cpt.contentTypeId left join cmsdatatype cdt on cpt.dataTypeId = cdt.nodeId inner join cmsContentType cct on un.id = cct.nodeId left join umbracoNode un2 on un2.id = un.parentID left join cmsContentType cct2 on un2.id = cct2.nodeId left join umbracoNode un3 on cpt.dataTypeId = un3.id where un.nodeObjectType = 'A2CB7800-F571-4787-9638-BC48539A0EFB'</value>
   </data>
 </root>
