@@ -209,8 +209,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY /y $(TargetDir)$(TargetName).dll $(SolutionDir)APE.Umbraco.App\bin\
-XCOPY /y $(TargetDir)$(TargetName).pdb $(SolutionDir)APE.Umbraco.App\bin\</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

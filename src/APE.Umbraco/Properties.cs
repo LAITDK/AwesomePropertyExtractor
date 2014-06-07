@@ -46,7 +46,8 @@ namespace APE.Umbraco
 	/// <summary>
 	/// Represents a property of type IHtmlString.
 	/// </summary>
-    [UmbracoPropertyId("5E9B75AE-FACE-41C8-B47E-5F4B0FD82F8")]
+	[UmbracoPropertyId("5E9B75AE-FACE-41C8-B47E-5F4B0FD82F83")] // Richtext editor
+	[UmbracoPropertyId("60B7DABF-99CD-41EB-B8E9-4D2E669BBDE9")] // Simple editor
     [UmbracoPropertyId("UMBRACO.TINYMCEV3")]
     public class HtmlStringProperty : DocTypeProperty<IHtmlString>
 	{
