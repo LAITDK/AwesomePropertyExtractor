@@ -154,14 +154,15 @@ namespace APE.Umbraco
 
 	}
 
-	[UmbracoPropertyId("Umbraco.MemberPicker")]
-	public class MemberProperty : DocTypeProperty<IPublishedContent>
-	{
-		public override IPublishedContent Map(IPublishedContent content, bool recursive = false)
-		{
-			var value = content.GetPropertyValue<int>(this);
+	// TODO: Uncomment for v. 2.1
+	//[UmbracoPropertyId("Umbraco.MemberPicker")]
+	//public class MemberProperty : DocTypeProperty<IPublishedContent>
+	//{
+	//	public override IPublishedContent Map(IPublishedContent content, bool recursive = false)
+	//	{
+	//		var value = content.GetPropertyValue<int>(this);
 
-			return UH.UmbracoHelper.TypedMember(value);
-		}
-	}
+	//		return UH.UmbracoHelper.TypedMember(value);
+	//	}
+	//}
 }

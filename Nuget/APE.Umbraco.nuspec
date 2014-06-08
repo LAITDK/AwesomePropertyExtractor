@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>APE.Umbraco</id>
-        <version>1.0.0-beta</version>
+        <version>2.0.0-beta</version>
         <title>AwesomePropertyExtractor for Umbraco</title>
         <authors>Nick Frederiksen &amp; Niels Jorck Ellegaard</authors>
         <owners>Nick Frederiksen &amp; Niels Jorck Ellegaard</owners>
@@ -13,7 +13,7 @@
         <copyright />
         <tags>umbraco properties, property, T4, document types, doctype, cms</tags>
         <dependencies>
-            <dependency id="UmbracoCms.Core" version="[6.0, 7.0)" />
+            <dependency id="UmbracoCms.Core" version="[7.0.1, 8.0)" />
         </dependencies>
     </metadata>
     <files>
