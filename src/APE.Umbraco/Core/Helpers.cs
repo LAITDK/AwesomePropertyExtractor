@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APE.Umbraco.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -15,7 +16,7 @@ namespace APE.Umbraco.Core
         {
             return assembly.GetTypes()
                 .Where(type => type.IsClass)
-                .Where(type => type.IsSubclassOf(typeof(DocTypeProperty)))
+                .Where(type => type.GetInterfaces().Any(i => i == typeof(IUmbracoProperty)))
                 .Where(x => x.CustomAttributes.Any(ca => ca.AttributeType == typeof(UmbracoPropertyIdAttribute)));
         }
 
@@ -26,7 +27,7 @@ namespace APE.Umbraco.Core
             //var test2 = Assembly.LoadFrom(currentAssemblyPath);
 
             //classes.AddRange(GetClasses(test2));
-            classes.AddRange(GetClasses(typeof(DocTypeProperty).Assembly));
+			classes.AddRange(GetClasses(typeof(IUmbracoProperty).Assembly));
 
             foreach (var type in classes)
             {

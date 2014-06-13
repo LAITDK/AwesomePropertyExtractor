@@ -1,4 +1,5 @@
 ﻿using APE.Umbraco;
+using APE.Umbraco.Interfaces;
 using Umbraco.Core.Models;
 
 namespace Umbraco.Web
@@ -16,7 +17,7 @@ namespace Umbraco.Web
         /// <param name="property">The DocTypeProperty that contains information on how to receive the property.</param>
         /// <param name="recursive">Defines if it should recursively go through ancestors for the property. Default is false.</param>
         /// <returns>The value of the property, in the type specified by the passed DocTypeProperty</returns>
-        public static TType GetPropertyValue<TType>(this IPublishedContent content, DocTypeProperty<TType> property, bool recursive)
+		public static TType GetPropertyValue<TType>(this IPublishedContent content, UmbracoProperty<TType> property, bool recursive)
         {
             return property.Map(content, recursive);
         }
@@ -28,7 +29,7 @@ namespace Umbraco.Web
         /// <param name="content">Content to get the property from.</param>
         /// <param name="property">The DocTypeProperty that contains information on how to receive the property.</param>
         /// <returns>The value of the property, in the type specified by the passed DocTypeProperty</returns>
-        public static TType GetPropertyValue<TType>(this IPublishedContent content, DocTypeProperty<TType> property)
+		public static TType GetPropertyValue<TType>(this IPublishedContent content, UmbracoProperty<TType> property)
         {
             return content.GetPropertyValue(property, false);
         }

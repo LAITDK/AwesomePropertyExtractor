@@ -1,4 +1,5 @@
 @inherits UmbracoTemplatePage
+@using APE.Umbraco.App.Classes.Cms;
 @{
     Layout = "umbLayout.cshtml";
 
@@ -8,7 +9,7 @@
         ? CurrentPage.Name
         : CurrentPage.Title;
 
-    var author = Model.Content.GetPropertyValue(APE.Umbraco.App.Classes.Cms.DocTypes.UmbNewsItem.Author);
+    var author = Model.Content.GetPropertyValue(DocTypes.UmbNewsItem.Author);
 }
 <div id="main-wrapper">
     <div id="main" class="container">

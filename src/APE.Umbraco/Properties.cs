@@ -12,7 +12,7 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("38B352C1-E9F8-4FD8-9324-9A2EAB06D97A")]
 	[UmbracoPropertyId("UMBRACO.TRUEFALSE")]
-	public class BooleanProperty : DocTypeProperty<bool>
+	public class BooleanProperty : UmbracoProperty<bool>
 	{
 
 	}
@@ -22,7 +22,7 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("158AA029-24ED-4948-939E-C3DA209E5FBA")]
 	[UmbracoPropertyId("UMBRACO.CONTENTPICKERALIAS")]
-	public class ContentProperty : DocTypeProperty<IPublishedContent>
+	public class ContentProperty : UmbracoProperty<IPublishedContent>
 	{
 		public override IPublishedContent Map(IPublishedContent content, bool recursive = false)
 		{
@@ -38,7 +38,7 @@ namespace APE.Umbraco
 	[UmbracoPropertyId("UMBRACO.DATE")]
 	[UmbracoPropertyId("928639ED-9C73-4028-920C-1E55DBB68783")]
 	[UmbracoPropertyId("UMBRACO.DATETIME")]
-	public class DateTimeProperty : DocTypeProperty<DateTime>
+	public class DateTimeProperty : UmbracoProperty<DateTime>
 	{
 
 	}
@@ -49,7 +49,7 @@ namespace APE.Umbraco
 	[UmbracoPropertyId("5E9B75AE-FACE-41C8-B47E-5F4B0FD82F83")] // Richtext editor
 	[UmbracoPropertyId("60B7DABF-99CD-41EB-B8E9-4D2E669BBDE9")] // Simple editor
 	[UmbracoPropertyId("UMBRACO.TINYMCEV3")]
-	public class HtmlStringProperty : DocTypeProperty<IHtmlString>
+	public class HtmlStringProperty : UmbracoProperty<IHtmlString>
 	{
 		public override IHtmlString Map(IPublishedContent content, bool recursive = false)
 		{
@@ -66,7 +66,7 @@ namespace APE.Umbraco
 	[UmbracoPropertyId("UMBRACO.DROPDOWN")]
 	[UmbracoPropertyId("A52C7C1C-C330-476E-8605-D63D3B84B6A6")]
 	[UmbracoPropertyId("UMBRACO.RADIOBUTTONLIST")]
-	public class IntProperty : DocTypeProperty<int>
+	public class IntProperty : UmbracoProperty<int>
 	{
 
 	}
@@ -76,7 +76,7 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("EAD69342-F06D-4253-83AC-28000225583B")]
 	[UmbracoPropertyId("UMBRACO.MEDIAPICKER")]
-	public class MediaProperty : DocTypeProperty<IPublishedContent>
+	public class MediaProperty : UmbracoProperty<IPublishedContent>
 	{
 		public override IPublishedContent Map(IPublishedContent content, bool recursive = false)
 		{
@@ -91,7 +91,7 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("7E062C13-7C41-4AD9-B389-41D88AEEF87C")]
 	[UmbracoPropertyId("UMBRACO.MULTINODETREEPICKER")]
-	public class MultiNodeProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
+	public class MultiNodeProperty : UmbracoProperty<IEnumerable<IPublishedContent>>
 	{
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
@@ -118,7 +118,7 @@ namespace APE.Umbraco
 	/// <summary>
 	/// Represents a property of type IEnumerable of IPublishedContent, containing content.
 	/// </summary>
-	public class MultiContentProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
+	public class MultiContentProperty : UmbracoProperty<IEnumerable<IPublishedContent>>
 	{
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
@@ -133,7 +133,7 @@ namespace APE.Umbraco
 	/// Represents a property of type IEnumerable of IPublishedContent, containing media.
 	/// </summary>
 	[UmbracoPropertyId("UMBRACO.MULTIPLEMEDIAPICKER")]
-	public class MultiMediaProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
+	public class MultiMediaProperty : UmbracoProperty<IEnumerable<IPublishedContent>>
 	{
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
@@ -149,20 +149,19 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("67DB8357-EF57-493E-91AC-936D305E0F2A")]
 	[UmbracoPropertyId("UMBRACO.TEXTBOXMULTIPLE")]
-	public class StringProperty : DocTypeProperty<string>
+	public class StringProperty : UmbracoProperty<string>
 	{
 
 	}
 
-	// TODO: Uncomment for v. 2.1
-	//[UmbracoPropertyId("Umbraco.MemberPicker")]
-	//public class MemberProperty : DocTypeProperty<IPublishedContent>
-	//{
-	//	public override IPublishedContent Map(IPublishedContent content, bool recursive = false)
-	//	{
-	//		var value = content.GetPropertyValue<int>(this);
+	[UmbracoPropertyId("Umbraco.MemberPicker")]
+	public class MemberProperty : UmbracoProperty<IPublishedContent>
+	{
+		public override IPublishedContent Map(IPublishedContent content, bool recursive = false)
+		{
+			var value = content.GetPropertyValue<int>(this);
 
-	//		return UH.UmbracoHelper.TypedMember(value);
-	//	}
-	//}
+			return UH.UmbracoHelper.TypedMember(value);
+		}
+	}
 }
