@@ -30,6 +30,8 @@ namespace APE.Umbraco.Core
 						var record = (IDataRecord)reader;
 
 						var doctypeAlias = record["DocType"].ToString();
+						var doctypeAliasText = Helpers.NameReplacement(doctypeAlias);
+
 						string propertyTypeAlias = Helpers.GetPropertyType(record["propertyTypeId"].ToString());
 
 						var propertyAlias = record["PropertyAlias"].ToString();
@@ -42,11 +44,11 @@ namespace APE.Umbraco.Core
 
 						yield return new DocTypeDTO
 						{
-							PropertyAlias = record["PropertyAlias"].ToString(),
+							PropertyAlias = propertyAlias,
 							PropertyAliasText = propertyAliasText,
-							DocType = doctypeAlias[0].ToString().ToUpper() + doctypeAlias.Substring(1),
+							DocType = doctypeAliasText[0].ToString().ToUpper() + doctypeAliasText.Substring(1),
 							DocTypeAlias = doctypeAlias,
-							ParentDocType = record["ParentDocType"].ToString(),
+							ParentDocType = Helpers.NameReplacement(record["ParentDocType"].ToString()),
 							PropertyDescription = record["PropertyDescription"].ToString().Replace(Environment.NewLine, " "),
 							PropertyType = record["PropertyType"].ToString(),
 							PropertyTypeAlias = propertyTypeAlias
