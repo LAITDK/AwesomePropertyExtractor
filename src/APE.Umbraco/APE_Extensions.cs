@@ -7,7 +7,7 @@ namespace Umbraco.Web
     /// <summary>
     /// Extends umbraco's IPublishedContent to enable the use of our DocTypeProperty.
     /// </summary>
-    public static class PublishedContentExtensions
+	public static class APE_Extensions
     {
         /// <summary>
         /// Gets an umbraco property from the passed content, and returns it in the type specified by the DocTypeProperty.

@@ -1,4 +1,3 @@
-﻿using APE.Umbraco.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace APE.Umbraco.Core
 {
 	public static class Helpers
 	{
-        private static readonly Dictionary<string, Type> TypeDictionary = new Dictionary<string, Type>();
+		private static readonly Dictionary<string, Type> TypeDictionary = new Dictionary<string, Type>();
 
         private static IEnumerable<Type> GetClasses(Assembly assembly)
         {
@@ -20,36 +19,40 @@ namespace APE.Umbraco.Core
                 .Where(x => x.CustomAttributes.Any(ca => ca.AttributeType == typeof(UmbracoPropertyIdAttribute)));
         }
 
-        static Helpers()
-        {
-            var classes = new List<Type>();
+		static Helpers()
+		{
+			var classes = new List<Type>();
 
-            //var test2 = Assembly.LoadFrom(currentAssemblyPath);
+			//var test2 = Assembly.LoadFrom(currentAssemblyPath);
 
             //classes.AddRange(GetClasses(test2));
 			classes.AddRange(GetClasses(typeof(IUmbracoProperty).Assembly));
 
-            foreach (var type in classes)
-            {
-                foreach (var attribute in type.CustomAttributes.Where(x => x.AttributeType == typeof(UmbracoPropertyIdAttribute)))
-                {
-                    var id = attribute.ConstructorArguments.FirstOrDefault().Value.ToString().ToUpper();
-                    TypeDictionary.Add(id, type);
-                }
-            }
-        }
-        public static string GetPropertyType(string idOrAlias)
-        {
-            Type propType;
-            if (!TypeDictionary.TryGetValue(idOrAlias.ToUpper(), out propType))
-            {
-                propType = typeof(StringProperty);
-            }
-            return propType.Name;
-        }
+			foreach (var type in classes)
+			{
+				foreach (var attribute in type.CustomAttributes.Where(x => x.AttributeType == typeof(UmbracoPropertyIdAttribute)))
+				{
+					var id = attribute.ConstructorArguments.FirstOrDefault().Value.ToString().ToUpper();
+					TypeDictionary.Add(id, type);
+				}
+			}
+		}
+		public static string GetPropertyType(string idOrAlias)
+		{
+			Type propType;
+			if (!TypeDictionary.TryGetValue(idOrAlias.ToUpper(), out propType))
+			{
+				propType = typeof(StringProperty);
+			}
+			return propType.Name;
+		}
 
 		public static string NameReplacement(string input)
 		{
+			if (string.IsNullOrEmpty(input))
+			{
+				return null;
+			}
 			var propReplacement = new Dictionary<string, string>
 	        {
 	            {"-", "_"},

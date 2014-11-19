@@ -232,7 +232,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PublishedContentExtensions.cs" />
+    <Compile Include="APE_Extensions.cs" />
     <Compile Include="UH.cs" />
     <Compile Include="UmbracoPropertyIdAttribute.cs" />
   </ItemGroup>
