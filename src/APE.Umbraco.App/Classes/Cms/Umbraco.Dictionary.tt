@@ -36,7 +36,7 @@
 	
 	foreach (ProjectItem item in project.ProjectItems)
 	{
-		if (Regex.IsMatch(item.Name,"(app|web).config",RegexOptions.IgnoreCase))
+		if (Regex.IsMatch(item.Name,"^(app|web).config$",RegexOptions.IgnoreCase))
 		{
 			config = System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap() { ExeConfigFilename = item.get_FileNames(0) }, ConfigurationUserLevel.None);
 		}
