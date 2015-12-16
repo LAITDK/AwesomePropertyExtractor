@@ -195,3 +195,4 @@ src/packages/
 src/APE.Umbraco.App/App_Data/Logs/
 src/APE.Umbraco.App/Classes/Cms/*.cs
 src/APE.Umbraco.App/App_Data/NuGetBackup/
+src/.vs/
