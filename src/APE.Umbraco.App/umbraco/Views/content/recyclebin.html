@@ -1,9 +1,16 @@
-<umb-panel>
-    <div class="umb-panel-header">
-        <div class="row-fluid">
-            <span class="span4 umb-panel-header-meta">
-                <h1>Recycle bin</h1>
-            </span>            
-        </div>
-    </div>    
-</umb-panel>
+<umb-editor-view ng-controller="Umbraco.Editors.Content.RecycleBinController">
+    <form>
+        <umb-editor-header name="page.name"
+                           name-locked="page.nameLocked"
+                           hide-icon="true"
+                           hide-description="true"
+                           hide-alias="true">
+        </umb-editor-header>
+
+        <umb-editor-container>
+
+            <div ng-include="listViewPath"></div>
+
+        </umb-editor-container>
+    </form>
+</umb-editor-view>

@@ -7,8 +7,9 @@
 
         <umb-header>
 
-            <div class="span7">
+            <div class="span7">                
                 <umb-content-name
+                    ng-disabled="content.isSystem == 1"
                     placeholder="@placeholders_entername"
                     ng-model="content.name"/>
             </div>
@@ -23,9 +24,9 @@
             </div>
         </umb-header>
         
-        <div class="umb-panel-body umb-scrollable row-fluid">
-            <div class="tab-content form-horizontal" style="padding-bottom: 90px">
-                <div class="umb-pane">
+        <umb-tab-view>
+            <umb-tab id="tabDataType" rel="DataType" style="display: block;">
+                <umb-pane>
                     
                     <umb-property property="properties.selectedEditor">                        
                         <div>
@@ -59,9 +60,9 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
+                </umb-pane>
+            </umb-tab>
+        </umb-tab-view>
 
     </umb-panel>
 </form>
