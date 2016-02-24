@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>APE.Umbraco</id>
+        <version>3.0.3-alpha</version>
+        <title>AwesomePropertyExtractor for Umbraco</title>
+        <authors>Nick Frederiksen &amp; Niels Jorck Ellegaard</authors>
+        <owners>Nick Frederiksen &amp; Niels Jorck Ellegaard</owners>
+        <licenseUrl>https://raw.githubusercontent.com/LAITDK/AwesomePropertyExtractor/master/LICENSE.md</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Awesome Property Extractor, (APE), is a framework for extracting property values in a generic and simple way, primarily from umbraco and affiliated libraries.</description>
+        <releaseNotes>3.0.3-alpha:
+Bug fixes. Multiline property descriptions will no longer cause invalid .cs to be generated.
+Added content type descriptions as xml comments on the classes.
+Cleaned up and added several DocTypeProperty&lt;...&gt; classes.
+		
+3.0.2-alpha:
+Bug fixes.
+NuGet feed test.
+
+3.0.1-alpha:
+Some bug fixes.
+
+3.0.0-alpha:
+Added support for content type compositions. This means some refactoring has been made where inheritance has been removed from the content types.
+Added support for media and member types.
+
+2.1.0:
+Fixed issue with our published content extension class, conflicted with Umbracos.
+Fixed issue where a doctype with dash or whitespace in alias made build errors.
+
+2.0.0:
+Initial release for Umbraco 7</releaseNotes>
+        <tags>umbraco properties property T4 document types doctype cms</tags>
+        <dependencies>
+            <dependency id="UmbracoCms.Core" version="[7.0.1, 8.0)" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\src\APE.Umbraco.App\Classes\APE\FileManager.ttinclude" target="content\Classes\APE\FileManager.ttinclude" />
+        <file src="..\src\APE.Umbraco.App\Classes\Cms\Dictionary\Umbraco.Dictionary.tt" target="content\Classes\Cms\Dictionary\Umbraco.Dictionary.tt" />
+        <file src="..\src\APE.Umbraco.App\Classes\Cms\DocTypes\Umbraco.DocTypes.tt" target="content\Classes\Cms\DocTypes\Umbraco.DocTypes.tt" />
+        <file src="..\src\APE.Umbraco.App\Classes\Cms\MediaTypes\Umbraco.MediaTypes.tt" target="content\Classes\Cms\MediaTypes\Umbraco.MediaTypes.tt" />
+        <file src="..\src\APE.Umbraco.App\Classes\Cms\MemberTypes\Umbraco.MemberTypes.tt" target="content\Classes\Cms\MemberTypes\Umbraco.MemberTypes.tt" />
+        <file src="..\src\APE.Umbraco\bin\Release\APE.Umbraco.dll" target="lib\net45\APE.Umbraco.dll" />
+        <file src="tools\install.ps1" target="tools\install.ps1" />
+    </files>
+</package>

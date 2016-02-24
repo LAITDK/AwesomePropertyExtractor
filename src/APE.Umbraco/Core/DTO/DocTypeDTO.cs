@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco.Core.DTO
 {
-	public class DocTypeDTO
+	public class DocTypeDTO : ContentTypeDTO
 	{
-		public string PropertyAlias { get; set; }
-		public string PropertyAliasText { get; set; }
-		public string DocType { get; set; }
-		public string DocTypeAlias { get; set; }
-		public string ParentDocType { get; set; }
-		public string PropertyDescription { get; set; }
-		public string PropertyType { get; set; }
-		public string PropertyTypeAlias { get; set; }
 	}
 }

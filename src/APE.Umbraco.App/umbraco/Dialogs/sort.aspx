@@ -19,12 +19,14 @@
     <div class="umb-dialog-body">
         <cc1:Pane runat="server">
 
-          <div id="loading" style="display: none;">
+          <div id="loading" style="display: none; margin-bottom: 35px;">
                 <div class="notice">
                     <p><%= umbraco.ui.Text("sort", "sortPleaseWait") %></p>
                 </div>
-                <br />
-                <cc1:ProgressBar ID="prog1" runat="server" Title="sorting.." />
+                
+                <div class="umb-loader-wrapper">
+                    <cc1:ProgressBar ID="prog1" runat="server" Title="sorting.." />
+                </div>
             </div>
 
             <div id="sortingDone" style="display: none;" class="success">
@@ -45,9 +47,9 @@
                     <table id="sortableNodes">
                         <thead>
                             <tr>
-                                <th style="width: 100%">Name</th>
-                                <th class="nowrap">Creation date</th>
-                                <th class="nowrap">Sort order</th>
+                                <th style="width: 100%"><%= umbraco.ui.Text("general", "name") %></th>
+                                <th class="nowrap" style="display: <%= HideDateColumn ? "none" : "table-cell" %>;"><%= umbraco.ui.Text("sort", "sortCreationDate") %></th>
+                                <th class="nowrap"><%= umbraco.ui.Text("sort", "sortOrder") %></th>
                             </tr>
                         </thead>
                         <tbody>

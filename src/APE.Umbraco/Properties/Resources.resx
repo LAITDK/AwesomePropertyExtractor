@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContentTypePropertiesSql" xml:space="preserve">
+    <value>select un.Id, un.[Text] as ContentType,
+cpt.Alias as PropertyAlias,
+cpt.Description as PropertyDescription,
+un3.Text as PropertyType,
+cdt.PropertyEditorAlias as PropertyEditorAlias
+from umbracoNode un
+ inner join cmspropertytype cpt on un.id = cpt.contentTypeId
+ left join cmsdatatype cdt on cpt.dataTypeId = cdt.nodeId
+ left join umbracoNode un3 on cpt.dataTypeId = un3.id
+where un.NodeObjectType = @contentTypeGuid
+and un.Id in ({0})</value>
+    <comment>Get all content type properties of a list of content types. The list of content types should be a content types and all its inherited content types.</comment>
+  </data>
+  <data name="ContentTypeSql" xml:space="preserve">
+    <value>select un.Id,
+un.ParentId as ParentId,
+un.[Text] as ContentType,
+cct.Alias as ContentTypeAlias,
+cct.Description as ContentTypeDescription
+from umbracoNode un
+inner join cmsContentType cct on un.id = cct.nodeId
+where un.NodeObjectType = @contentTypeGuid</value>
+    <comment>Get all content types of a specific type (document, media, member).</comment>
+  </data>
   <data name="DictionarySql" xml:space="preserve">
     <value>SELECT [key] FROM [cmsDictionary]</value>
   </data>
-  <data name="DocTypeSql" xml:space="preserve">
-    <value>select cpt.Alias as PropertyAlias, cpt.Description as PropertyDescription, cct.Alias as DocType,cct2.Alias as ParentDocType,un3.Text as PropertyType, cdt.propertyEditorAlias as propertyTypeId from umbracoNode un left join cmspropertytype cpt on un.id = cpt.contentTypeId left join cmsdatatype cdt on cpt.dataTypeId = cdt.nodeId inner join cmsContentType cct on un.id = cct.nodeId left join umbracoNode un2 on un2.id = un.parentID left join cmsContentType cct2 on un2.id = cct2.nodeId left join umbracoNode un3 on cpt.dataTypeId = un3.id where un.nodeObjectType = 'A2CB7800-F571-4787-9638-BC48539A0EFB'</value>
+  <data name="InheritedContentTypeSql" xml:space="preserve">
+    <value>select ct2ct.ChildContentTypeId, un.[Text] as ContentType, ct2ct.ParentContentTypeId as ParentId
+from umbracoNode un
+ left join cmsContentType2ContentType ct2ct on un.id = ct2ct.ChildContentTypeId
+where un.NodeObjectType = @contentTypeGuid
+and un.Id = @id</value>
+    <comment>Get all content types inherited by a given content type. Execute this recursively.</comment>
   </data>
 </root>

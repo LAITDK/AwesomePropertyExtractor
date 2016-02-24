@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
-    public class UmbracoPropertyIdAttribute : Attribute
-    {
-        public string Id { get; private set; }
-        public UmbracoPropertyIdAttribute(string id)
-        {
-            this.Id = id;
-        }
-    }
+	[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
+	public class UmbracoPropertyIdAttribute : Attribute
+	{
+		public string Id { get; private set; }
+		public UmbracoPropertyIdAttribute(string id)
+		{
+			this.Id = id;
+		}
+	}
 }

@@ -5,9 +5,9 @@
             <val-property-msg property="property"></val-property-msg>
             
             <div class="umb-el-wrap">
-                <label class="control-label" ng-hide="property.hideLabel" for="{{property.alias}}">
+                <label class="control-label" ng-hide="property.hideLabel" for="{{property.alias}}" ng-attr-title="{{propertyAlias}}">
                     {{property.label}}
-                    <small>{{property.description}}</small>
+                    <small ng-bind-html="property.description"></small>
                 </label>
 
                 <div class="controls controls-row" ng-transclude>

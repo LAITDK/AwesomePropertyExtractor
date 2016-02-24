@@ -1,0 +1,152 @@
+﻿@*
+	You have to transform all the t4 templates for this to work.
+*@
+
+@using APE.Umbraco.App.Classes.Cms.DocTypes
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = null;
+
+	var CheckboxListVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Checkboxlist);
+	var ColorpickeraliasVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Colorpickeralias);
+	var ContentpickeraliasVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Contentpickeralias);
+	var DateVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Date);
+	var DatetimeVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Datetime);
+	var DropdownVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Dropdown);
+	var DropdownlistmultiplepublishkeysVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Dropdownlistmultiplepublishkeys);
+	var DropdownlistpublishingkeysVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Dropdownlistpublishingkeys);
+	var DropdownmultipleVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Dropdownmultiple);
+	var EmailaddressVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Emailaddress);
+	var FolderbrowserVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Folderbrowser);
+	var GridVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Grid);
+	var ImagecropperVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Imagecropper);
+	var IntegerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Integer);
+	var ListviewVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Listview);
+	var MacrocontainerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Macrocontainer);
+	var MarkdowneditorVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Markdowneditor);
+	var MediapickerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Mediapicker);
+	var MembergrouppickerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Membergrouppicker);
+	var MemberpickerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Memberpicker);
+	var MultinodetreepickerValContent = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.MultiNodeTreePickerContent);
+	var MultinodetreepickerValMedia = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.MultiNodeTreePickerMedia);
+	var MultinodetreepickerValMember = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.MultinodetreepickerMembers);
+	var MultiplemediapickerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Multiplemediapicker);
+	var MultipletextstringVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Multipletextstring);
+	var NoeditVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Noedit);
+	var RadiobuttonlistVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Radiobuttonlist);
+	var RelatedlinksVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Relatedlinks);
+	var SliderVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Slider);
+	var TagsVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Tags);
+	var TextboxVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Textbox);
+	var TextboxmultipleVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Textboxmultiple);
+	var Tinymcev3Val = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Tinymcev3);
+	var TruefalseVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Truefalse);
+	var UploadfieldVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Uploadfield);
+	var UserpickerVal = Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Userpicker);
+}
+
+@render(DocTypes.AllPropertyTypes.Checkboxlist)
+<p>APE val: @CheckboxListVal</p>
+<p>APE val, iterated: @CheckboxListVal.Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Colorpickeralias)
+<p>APE val: @ColorpickeraliasVal</p>
+@render(DocTypes.AllPropertyTypes.Contentpickeralias)
+<p>APE val: @ContentpickeraliasVal</p>
+<p>APE val, id: @ContentpickeraliasVal.Id</p>
+@render(DocTypes.AllPropertyTypes.Date)
+<p>APE val: @DateVal</p>
+@render(DocTypes.AllPropertyTypes.Datetime)
+<p>APE val: @DatetimeVal</p>
+@render(DocTypes.AllPropertyTypes.Dropdown)
+<p>APE val: @DropdownVal</p>
+@render(DocTypes.AllPropertyTypes.Dropdownlistmultiplepublishkeys)
+<p>APE val: @DropdownlistmultiplepublishkeysVal</p>
+<p>APE val, iterated: @DropdownlistmultiplepublishkeysVal.Select(s => s.ToString()).Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Dropdownlistpublishingkeys)
+<p>APE val: @DropdownlistpublishingkeysVal</p>
+@render(DocTypes.AllPropertyTypes.Dropdownmultiple)
+<p>APE val: @DropdownmultipleVal</p>
+<p>APE val, iterated: @DropdownmultipleVal.Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Emailaddress)
+<p>APE val: @EmailaddressVal</p>
+@render(DocTypes.AllPropertyTypes.Folderbrowser)
+<p>APE val: @FolderbrowserVal</p>
+@render(DocTypes.AllPropertyTypes.Grid)
+<p>APE val: @GridVal</p>
+@render(DocTypes.AllPropertyTypes.Imagecropper)
+<p>APE val: @ImagecropperVal</p>
+<p>APE val, can be deserialized to ImageCropDataSet: @(Newtonsoft.Json.JsonConvert.DeserializeObject<Umbraco.Web.Models.ImageCropDataSet>(Model.Content.GetPropertyValue(DocTypes.AllPropertyTypes.Imagecropper)) != null)</p>
+@render(DocTypes.AllPropertyTypes.Integer)
+<p>APE val: @IntegerVal</p>
+@render(DocTypes.AllPropertyTypes.Listview)
+<p>APE val: @ListviewVal</p>
+@render(DocTypes.AllPropertyTypes.Macrocontainer)
+<p>APE val: @MacrocontainerVal</p>
+@render(DocTypes.AllPropertyTypes.Markdowneditor)
+<p>APE val: @MarkdowneditorVal</p>
+@render(DocTypes.AllPropertyTypes.Mediapicker)
+<p>APE val: @MediapickerVal</p>
+<p>APE val, id: @MediapickerVal.Id</p>
+@render(DocTypes.AllPropertyTypes.Membergrouppicker)
+<p>APE val: @MembergrouppickerVal</p>
+<p>APE val, iterated: @MembergrouppickerVal.Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Memberpicker)
+<p>APE val: @MemberpickerVal</p>
+<p>APE val, id: @MemberpickerVal.Id</p>
+@render(DocTypes.AllPropertyTypes.MultiNodeTreePickerContent)
+<p>APE val: @MultinodetreepickerValContent</p>
+<p>APE val, iterated: @MultinodetreepickerValContent.Select(s => s.Id.ToString()).Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.MultiNodeTreePickerMedia)
+<p>APE val: @MultinodetreepickerValMedia</p>
+<p>APE val, iterated: @MultinodetreepickerValMedia.Select(s => s.Id.ToString()).Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.MultinodetreepickerMembers)
+<p>APE val: @MultinodetreepickerValMember)</p>
+<p>APE val, iterated: @MultinodetreepickerValMember.Select(s => s.Id.ToString()).Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Multiplemediapicker)
+<p>APE val: @MultiplemediapickerVal</p>
+<p>APE val, iterated: @MultiplemediapickerVal.Select(s => s.Id.ToString()).Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Multipletextstring)
+<p>APE val: @MultipletextstringVal</p>
+<p>APE val, iterated: @MultipletextstringVal.Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Noedit)
+<p>APE val: @NoeditVal</p>
+@render(DocTypes.AllPropertyTypes.Radiobuttonlist)
+<p>APE val: @RadiobuttonlistVal</p>
+@render(DocTypes.AllPropertyTypes.Relatedlinks)
+<p>APE val: @RelatedlinksVal</p>
+<p>APE val, iterated: @RelatedlinksVal.Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Slider)
+<p>APE val: @SliderVal</p>
+@render(DocTypes.AllPropertyTypes.Tags)
+<p>APE val: @TagsVal</p>
+<p>APE val, iterated: @TagsVal.Aggregate((s, e) => s + ", " + e)</p>
+@render(DocTypes.AllPropertyTypes.Textbox)
+<p>APE val: @TextboxVal</p>
+@render(DocTypes.AllPropertyTypes.Textboxmultiple)
+<p>APE val: @TextboxmultipleVal</p>
+@render(DocTypes.AllPropertyTypes.Tinymcev3)
+<p>APE val: @Tinymcev3Val</p>
+@render(DocTypes.AllPropertyTypes.Truefalse)
+<p>APE val: @TruefalseVal</p>
+@render(DocTypes.AllPropertyTypes.Uploadfield)
+<p>APE val: @UploadfieldVal</p>
+@render(DocTypes.AllPropertyTypes.Userpicker)
+<p>APE val: @UserpickerVal</p>
+
+@helper render(APE.Umbraco.DocTypeProperty docType)
+{
+	var dtVal = Model.Content.GetPropertyValue(docType);
+	var dtValRaw = Model.Content.GetPropertyValue(docType.Alias);
+	<hr />
+	<p>Alias: @docType.Alias</p>
+	<p>Type: @docType.GetType()</p>
+	var baseType = docType.GetType().BaseType;
+	while (baseType != null && baseType != typeof(APE.Umbraco.DocTypeProperty))
+	{
+		<p>Base Type: @baseType</p>
+		baseType = baseType.BaseType;
+	}
+	@*<p>Value: @(dtVal == null ? "(null)" : dtVal)</p>*@
+	<p>Value Type: @(dtVal == null ? "(null)" : dtVal.GetType().ToString())</p>
+	<p>Raw val: @(dtValRaw == null ? "(null)" : dtValRaw)</p>
+}
