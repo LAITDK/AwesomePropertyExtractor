@@ -69,7 +69,7 @@ namespace <#= namespaceHint #>
 <#	foreach(var dictionaryItem in dictionary)
 	{
 #>
-		public static string <#= dictionaryItem.Name  #> { get { return UH.UmbracoHelper.GetDictionaryValue(DictionaryKeys.<#= dictionaryItem.Name  #>); } }
+		public static string <#= dictionaryItem.Name  #> { get { return APE.Umbraco.UH.UmbracoHelper.GetDictionaryValue(DictionaryKeys.<#= dictionaryItem.Name  #>); } }
 <#
 	}
 #>
