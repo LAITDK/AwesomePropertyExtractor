@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using APE.Umbraco.Core.Interfaces;
+using APE.Umbraco.Core.Models;
 
 namespace APE.Umbraco
 {
@@ -155,7 +156,8 @@ namespace APE.Umbraco
 
 			return UH.UmbracoHelper.TypedMedia(value);
 		}
-	}
+
+    }
 
 	/// <summary>
 	/// Represents a property of type <see cref="IPublishedContent"/>, containing a member.
@@ -177,8 +179,8 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("7E062C13-7C41-4AD9-B389-41D88AEEF87C")]
 	[UmbracoPropertyId("UMBRACO.MULTINODETREEPICKER")]
-	public class MultiNodeProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
-	{
+	public class MultiNodeProperty : DocTypeProperty<IEnumerable<IPublishedContent>>, IDocTypeProperty<IPublishedContent>
+    {
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
 			var prop = content.GetPropertyValue<string>(Alias, recursive, string.Empty);
@@ -202,7 +204,22 @@ namespace APE.Umbraco
 
 			return returnStuff;
 		}
-	}
+
+        public static Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        {                                        
+            if (preValues.Any(pv => pv.Alias == "maxNumber" && pv.Value == "1"))
+            {
+            return typeof(IDocTypeProperty<IPublishedContent>);
+            }
+                return typeof(MultiNodeProperty);
+        }
+
+        IPublishedContent IDocTypeProperty<IPublishedContent>.Map(IPublishedContent content, bool recursive)
+        {
+            return this.Map(content, recursive).FirstOrDefault();
+        }
+
+    }
 
 	/// <summary>
 	/// Represents a property of type <see cref="IEnumerable{}"/> of <see cref="IPublishedContent"/>, containing content.
@@ -222,8 +239,8 @@ namespace APE.Umbraco
 	/// Represents a property of type <see cref="IEnumerable{}"/> of <see cref="IPublishedContent"/>, containing media.
 	/// </summary>
 	[UmbracoPropertyId("UMBRACO.MULTIPLEMEDIAPICKER")]
-	public class MultiMediaProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
-	{
+	public class MultiMediaProperty : DocTypeProperty<IEnumerable<IPublishedContent>>, IDocTypeProperty<IPublishedContent>
+    {
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
 			var prop = content.GetPropertyValue<string>(Alias, recursive, string.Empty);
@@ -231,7 +248,22 @@ namespace APE.Umbraco
 				? Enumerable.Empty<IPublishedContent>()
 				: UH.UmbracoHelper.TypedMedia(prop.Split(','));
 		}
-	}
+
+
+        public static Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        {
+            if (preValues.Any(pv=>pv.Alias == "multiPicker" && pv.Value == "1"))
+            {
+                return typeof(MultiMediaProperty);
+            }
+            return typeof(IDocTypeProperty<IPublishedContent>);
+        }
+
+        IPublishedContent IDocTypeProperty<IPublishedContent>.Map(IPublishedContent content, bool recursive)
+        {
+           return this.Map(content, recursive).FirstOrDefault();
+        }
+    }
 
 	/// <summary>
 	/// Represents a property of type <see cref="IEnumerable{}"/> of <see cref="IPublishedContent"/>, containing members.

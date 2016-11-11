@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco.Core.Models
 {
-    public class PreValue
+    public class PropertyPreValue
     {
         public string Value { get; set; }
         public string Alias { get; set; }

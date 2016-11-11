@@ -30,7 +30,7 @@ namespace APE.Umbraco.Core.DTO
 
         internal Type Type { get; set; }
 
-        public string GetValueTypeName(IEnumerable<PreValue> preValues)
+        public string GetValueTypeName(IEnumerable<PropertyPreValue> preValues)
         {
             var type = Type;
             var getTypeMethod = this.Type.GetMethod("GetValueType");

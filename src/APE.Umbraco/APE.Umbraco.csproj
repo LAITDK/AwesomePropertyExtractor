@@ -289,7 +289,7 @@
     <Compile Include="Core\Helpers.cs" />
     <Compile Include="Core\Interfaces\IDocTypeProperty.cs" />
     <Compile Include="Core\Models\DataTypePreValue.cs" />
-    <Compile Include="Core\Models\PreValue.cs" />
+    <Compile Include="Core\Models\PropertyPreValue.cs" />
     <Compile Include="DocTypeProperty.cs" />
     <Compile Include="Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

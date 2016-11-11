@@ -25,7 +25,7 @@
 <#@ include file="EF.Utility.CS.ttinclude" #>
 <#
 	var code = new CodeGenerationTools(this);
-	var namespaceHint = code.VsNamespaceSuggestion();
+	var namespaceHint = code.VsNamespaceSuggestion() ?? "DEBUG";
 
 	var hostServiceProvider = (IServiceProvider)this.Host;
 	var host = this.Host as ITextTemplatingEngineHost;
@@ -95,6 +95,7 @@ foreach(var docType in docTypes)
 using System;
 using APE.Umbraco;
 using APE.Umbraco.Core.Interfaces;
+using Umbraco.Core.Models;
 namespace <#= namespaceHint #>
 {
 <# if (!string.IsNullOrEmpty(docType.ContentTypeDescription))

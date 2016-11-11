@@ -28,7 +28,7 @@ namespace APE.Umbraco.Core
 			return GetContentTypes<MemberTypeDTO>(dataDir, connectionSetting, new Guid(global::Umbraco.Core.Constants.ObjectTypes.MemberType));
 		}
 
-        public static ILookup<int, PreValue> GetPreValueLookup(string dataDir, ConnectionStringSettings connectionSetting)
+        public static ILookup<int, PropertyPreValue> GetPreValueLookup(string dataDir, ConnectionStringSettings connectionSetting)
         {
             return GetPreValues(dataDir, connectionSetting);
         }
@@ -82,7 +82,7 @@ namespace APE.Umbraco.Core
 			return tList;
 		}
 
-        private static ILookup<int, PreValue> GetPreValues(string dataDir, ConnectionStringSettings connectionSetting)
+        private static ILookup<int, PropertyPreValue> GetPreValues(string dataDir, ConnectionStringSettings connectionSetting)
         {
             List<DataTypePreValue> tList = new List<DataTypePreValue>();
             string getAllSql = Properties.Resources.CMSDataTypePreValuesSql;
@@ -113,7 +113,7 @@ namespace APE.Umbraco.Core
                 }
             }
 
-            return tList.ToLookup(k=>k.DataTypeId, v=> (PreValue)v);
+            return tList.ToLookup(k=>k.DataTypeId, v=> (PropertyPreValue)v);
         }
 
 		// Recursively get all inherited content types.

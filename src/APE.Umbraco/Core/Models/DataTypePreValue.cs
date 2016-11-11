@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco.Core.Models
 {
-    internal class DataTypePreValue : PreValue
+    internal class DataTypePreValue : PropertyPreValue
     {
         public int DataTypeId { get; set; }
     }

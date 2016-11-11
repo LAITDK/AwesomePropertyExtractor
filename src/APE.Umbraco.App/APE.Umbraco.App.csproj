@@ -367,6 +367,9 @@
     <Compile Include="Classes\Cms\DocTypes\Namespace.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Cms\DocTypes\Test.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Cms\DocTypes\UmbHomePage.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>
@@ -578,6 +581,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\404handlers.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\test.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

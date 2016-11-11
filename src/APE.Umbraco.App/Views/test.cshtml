@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using APE.Umbraco.App.Classes.Cms.DocTypes
+@{
+	Layout = "umbLayout.cshtml";
+}
+<p> 1 billede -
+    <img src="@Model.Content.GetPropertyValue(DocTypes.Test.OneImage).Url" />
+	</p>
+	<p> flere billeder: 
+    @foreach (var item in Model.Content.GetPropertyValue(DocTypes.Test.MultipleImages))
+    {
+        <img src="@item.Url" />
+    }
+
+	</p>
+		<p>udvalgt side:
+    <a href="@Model.Content.GetPropertyValue(DocTypes.Test.UdvalgtSide).Url">Udvalgt side</a>
+	
+	</p>
+		<p> foretrukne sider:
+    @foreach (var item in Model.Content.GetPropertyValue(DocTypes.Test.ForetrukneSider))
+    {
+        <a href="@item.Url">@item.Name</a>
+    }
+	
+</p>
