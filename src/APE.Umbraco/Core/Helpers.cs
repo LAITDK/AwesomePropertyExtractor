@@ -35,19 +35,33 @@ namespace APE.Umbraco.Core
 				}
 			}
 		}
-		public static string GetPropertyType(string idOrAlias)
+		public static Type GetPropertyType(string idOrAlias)
 		{
 			Type propType;
 			if (!TypeDictionary.TryGetValue(idOrAlias.ToUpperInvariant(), out propType))
 			{
 				propType = typeof(StringProperty);
 			}
-			return propType.Name;
+			return propType;
 		}
 
-		// Get a valid C# identifier from a string. This method will also try to CamelCase the identifier.
-		// This will in no way generate the perfect identifier nor can it check if the identifier already exists.
-		public static string GetValidCSharpIdentifier(string identifier)
+        public static string CSharpName(Type type)
+        {
+            var sb = new StringBuilder();
+            var name = type.Name;
+            if (!type.IsGenericType) return name;
+            sb.Append(name.Substring(0, name.IndexOf('`')));
+            sb.Append("<");
+            sb.Append(string.Join(", ", type.GetGenericArguments()
+                                            .Select(t => CSharpName(t))));
+            sb.Append(">");
+
+            return sb.ToString();
+        }
+
+        // Get a valid C# identifier from a string. This method will also try to CamelCase the identifier.
+        // This will in no way generate the perfect identifier nor can it check if the identifier already exists.
+        public static string GetValidCSharpIdentifier(string identifier)
 		{
 			if (identifier == null)
 				throw new ArgumentNullException(nameof(identifier) + " must have a value");

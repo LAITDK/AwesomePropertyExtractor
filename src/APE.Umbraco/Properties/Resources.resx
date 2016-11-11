@@ -117,12 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CMSDataTypePreValuesSql" xml:space="preserve">
+    <value>SELECT Id, DatatypeNodeId, Value, Alias
+FROM cmsDataTypePreValues</value>
+    <comment>Get all CmsDataTypePreValues</comment>
+  </data>
   <data name="ContentTypePropertiesSql" xml:space="preserve">
     <value>select un.Id, un.[Text] as ContentType,
 cpt.Alias as PropertyAlias,
 cpt.Description as PropertyDescription,
 un3.Text as PropertyType,
-cdt.PropertyEditorAlias as PropertyEditorAlias
+cdt.PropertyEditorAlias as PropertyEditorAlias, cdt.nodeId as DataTypeId
 from umbracoNode un
  inner join cmspropertytype cpt on un.id = cpt.contentTypeId
  left join cmsdatatype cdt on cpt.dataTypeId = cdt.nodeId

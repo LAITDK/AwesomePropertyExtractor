@@ -297,6 +297,74 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Cms\DocTypes\AllPropertyTypes.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\Ape1Type1.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\Ape1Type2.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi1.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi2.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi3.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi3a.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi3aa.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi4.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi5.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombi5a.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeCombinationsTest1.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeRootTest1.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\ApeRootTest2.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\Int32.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\Namespace.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\UmbHomePage.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\UmbMaster.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\UmbNewsItem.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\UmbNewsOverview.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\Umbraco.DocTypes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\DocTypes\UmbTextPage.cs">
+      <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

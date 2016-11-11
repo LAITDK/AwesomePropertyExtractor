@@ -5,6 +5,7 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using APE.Umbraco.Core.Interfaces;
 
 namespace APE.Umbraco
 {
@@ -17,24 +18,24 @@ namespace APE.Umbraco
 	{
 	}
 
-	/// <summary>
-	/// Represents a property of type <see cref="int"/>.
-	/// </summary>
-	[UmbracoPropertyId("1413AFCB-D19A-4173-8E9A-68288D2A73B8")]
-	[UmbracoPropertyId("UMBRACO.INTEGER")]
-	[UmbracoPropertyId("A52C7C1C-C330-476E-8605-D63D3B84B6A6")]
-	[UmbracoPropertyId("UMBRACO.RADIOBUTTONLIST")]
-	[UmbracoPropertyId("29E790E6-26B3-438A-B21F-908663A0B19E")]
-	[UmbracoPropertyId("UMBRACO.SLIDER")]
-	[UmbracoPropertyId("UMBRACO.USERPICKER")]
-	public class IntProperty : DocTypeProperty<int>
-	{
-	}
+    /// <summary>
+    /// Represents a property of type <see cref="int"/>.
+    /// </summary>
+    [UmbracoPropertyId("1413AFCB-D19A-4173-8E9A-68288D2A73B8")]
+    [UmbracoPropertyId("UMBRACO.INTEGER")]
+    [UmbracoPropertyId("A52C7C1C-C330-476E-8605-D63D3B84B6A6")]
+    [UmbracoPropertyId("UMBRACO.RADIOBUTTONLIST")]
+    [UmbracoPropertyId("29E790E6-26B3-438A-B21F-908663A0B19E")]
+    [UmbracoPropertyId("UMBRACO.SLIDER")]
+    [UmbracoPropertyId("UMBRACO.USERPICKER")]
+    public class IntProperty : DocTypeProperty<int>
+    {
+    }
 
-	/// <summary>
-	/// Represents a property of type <see cref="string"/>.
-	/// </summary>
-	[UmbracoPropertyId("67DB8357-EF57-493E-91AC-936D305E0F2A")]
+    /// <summary>
+    /// Represents a property of type <see cref="string"/>.
+    /// </summary>
+    [UmbracoPropertyId("67DB8357-EF57-493E-91AC-936D305E0F2A")]
 	[UmbracoPropertyId("UMBRACO.TEXTBOXMULTIPLE")]
 	[UmbracoPropertyId("A74EA9C9-8E18-4D2A-8CF6-73C6206C5DA6")]
 	[UmbracoPropertyId("UMBRACO.DROPDOWN")]

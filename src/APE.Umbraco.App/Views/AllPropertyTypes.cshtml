@@ -133,9 +133,9 @@
 @render(DocTypes.AllPropertyTypes.Userpicker)
 <p>APE val: @UserpickerVal</p>
 
-@helper render(APE.Umbraco.DocTypeProperty docType)
+@helper render(APE.Umbraco.Core.Interfaces.IDocTypeProperty docType)
 {
-	var dtVal = Model.Content.GetPropertyValue(docType);
+	var dtVal = Model.Content.GetPropertyValue(docType.Alias);
 	var dtValRaw = Model.Content.GetPropertyValue(docType.Alias);
 	<hr />
 	<p>Alias: @docType.Alias</p>
