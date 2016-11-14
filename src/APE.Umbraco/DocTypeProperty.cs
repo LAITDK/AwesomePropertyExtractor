@@ -1,25 +1,21 @@
-﻿using System;
+﻿using APE.Umbraco.Core.Interfaces;
+using System;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace APE.Umbraco
 {
-	public class DocTypeProperty<TType> : DocTypeProperty
+	public class DocTypeProperty<TType> : DocTypeProperty, IDocTypeProperty<TType>
 	{
 		public virtual TType Map(IPublishedContent content, bool recursive = false)
 		{
 			return content.GetPropertyValue<TType>(this.Alias, recursive, default(TType));
-		}
+        }
 
-		public static implicit operator string(DocTypeProperty<TType> type)
-		{
-			return type.Alias;
-		}
+    }
 
-	}
-
-	public abstract class DocTypeProperty
-	{
+	public abstract class DocTypeProperty: IDocTypeProperty
+    {
 		private string _alias;
 
 		/// <summary>
@@ -56,15 +52,15 @@ namespace APE.Umbraco
 			return new TProp() { Alias = this.Alias };
 		}
 
-		/// <summary>
-		/// Implicitly cast an object of this type to a string.
-		/// </summary>
-		/// <param name="prop">DocTypeProperty to cast.</param>
-		/// <returns>The alias of the property</returns>
-		public static implicit operator string(DocTypeProperty prop)
-		{
-			return prop.Alias;
-		}
+        /// <summary>
+        /// Implicitly cast an object of this type to a string.
+        /// </summary>
+        /// <param name="prop">DocTypeProperty to cast.</param>
+        /// <returns>The alias of the property</returns>
+        public static implicit operator string(DocTypeProperty prop)
+        {
+            return prop.Alias;
+        }
 
-	}
+    }
 }

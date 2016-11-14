@@ -25,7 +25,7 @@
 <#@ include file="EF.Utility.CS.ttinclude" #>
 <#
 	var code = new CodeGenerationTools(this);
-	var namespaceHint = code.VsNamespaceSuggestion();
+	var namespaceHint = code.VsNamespaceSuggestion() ?? "DEBUG";
 
 	var hostServiceProvider = (IServiceProvider)this.Host;
 	var host = this.Host as ITextTemplatingEngineHost;
@@ -49,7 +49,7 @@
 
 	var manager = TemplateFileManager.Create(this);
 	var docTypes = DBConnection.GetDocTypes(dataDir, connectionSetting).ToList();
-
+	var preValueLookup = DBConnection.GetPreValueLookup(dataDir, connectionSetting);
 	manager.StartHeader();
 #>
 //------------------------------------------------------------------------------
@@ -94,6 +94,8 @@ foreach(var docType in docTypes)
 #>
 using System;
 using APE.Umbraco;
+using APE.Umbraco.Core.Interfaces;
+using Umbraco.Core.Models;
 namespace <#= namespaceHint #>
 {
 <# if (!string.IsNullOrEmpty(docType.ContentTypeDescription))
@@ -122,7 +124,11 @@ namespace <#= namespaceHint #>
 		}
 <#		foreach (var property in docType.Properties.Where(x => !string.IsNullOrWhiteSpace(x.PropertyAlias)))
 		{
+			var preValues= preValueLookup[property.DataTypeId];
+			var propType= property.GetValueTypeName(preValues);
 #>
+
+
 
 		///	<summary>
 		///		<para>Datatype: <#=property.PropertyType#>.</para>
@@ -134,7 +140,7 @@ namespace <#= namespaceHint #>
 		}
 #>
 		///	</summary>
-		public <#=property.PropertyTypeAlias#> <#=property.PropertyAliasText#> { get; private set; }
+		public <#=propType#> <#=property.PropertyAliasText#> { get; private set; }
 <#
 		}
 #>

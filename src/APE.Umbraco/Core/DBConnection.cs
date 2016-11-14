@@ -7,6 +7,7 @@ using System.Text;
 using APE.Umbraco.Core.DTO;
 using System.Data.SqlServerCe;
 using System.Configuration;
+using APE.Umbraco.Core.Models;
 
 namespace APE.Umbraco.Core
 {
@@ -27,7 +28,11 @@ namespace APE.Umbraco.Core
 			return GetContentTypes<MemberTypeDTO>(dataDir, connectionSetting, new Guid(global::Umbraco.Core.Constants.ObjectTypes.MemberType));
 		}
 
-		private static IEnumerable<T> GetContentTypes<T>(string dataDir, ConnectionStringSettings connectionSetting, Guid contentTypeGuid)
+        public static ILookup<int, PropertyPreValue> GetPreValueLookup(string dataDir, ConnectionStringSettings connectionSetting)
+        {
+            return GetPreValues(dataDir, connectionSetting);
+        }
+        private static IEnumerable<T> GetContentTypes<T>(string dataDir, ConnectionStringSettings connectionSetting, Guid contentTypeGuid)
 			where T : ContentTypeDTO, new()
 		{
 			List<T> tList = new List<T>();
@@ -76,6 +81,40 @@ namespace APE.Umbraco.Core
 
 			return tList;
 		}
+
+        private static ILookup<int, PropertyPreValue> GetPreValues(string dataDir, ConnectionStringSettings connectionSetting)
+        {
+            List<DataTypePreValue> tList = new List<DataTypePreValue>();
+            string getAllSql = Properties.Resources.CMSDataTypePreValuesSql;
+
+            if (connectionSetting != null)
+            {
+                using (IDbConnection conn = GetDbConnection(dataDir, connectionSetting))
+                {
+                    conn.Open();
+
+                    using (IDbCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = getAllSql;
+                        
+                        using (IDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DataTypePreValue t = new DataTypePreValue();
+
+                                t.Alias = reader["Alias"].ToString();
+                                t.DataTypeId = (int)reader["DatatypeNodeId"];
+                                t.Value = reader["Value"].ToString();
+                                tList.Add(t);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return tList.ToLookup(k=>k.DataTypeId, v=> (PropertyPreValue)v);
+        }
 
 		// Recursively get all inherited content types.
 		private static void GetAllInheritedContentTypeIds(ICollection<int> ids, IDbConnection conn, int id, Guid contentTypeGuid)
@@ -164,13 +203,19 @@ namespace APE.Umbraco.Core
 					var record = reader;
 
 					var contentTypePropertyDTO = new ContentTypePropertyDTO();
-					contentTypePropertyDTO.PropertyAlias = record["PropertyAlias"].ToString();
+                    contentTypePropertyDTO.DataTypeId = (int)record["DataTypeId"];
+                    contentTypePropertyDTO.PropertyAlias = record["PropertyAlias"].ToString();
 					contentTypePropertyDTO.PropertyAliasText = Helpers.GetValidCSharpIdentifier(contentTypePropertyDTO.PropertyAlias);
 					if (!string.IsNullOrWhiteSpace(contentTypePropertyDTO.PropertyAliasText))
 						contentTypePropertyDTO.PropertyAliasText = contentTypePropertyDTO.PropertyAliasText[0].ToString().ToUpper() + contentTypePropertyDTO.PropertyAliasText.Substring(1);
 					contentTypePropertyDTO.PropertyDescription = record["PropertyDescription"].ToString();
 					contentTypePropertyDTO.PropertyType = record["PropertyType"].ToString();
-					contentTypePropertyDTO.PropertyTypeAlias = Helpers.GetPropertyType(record["PropertyEditorAlias"].ToString());
+
+                    var propertyType = Helpers.GetPropertyType(record["PropertyEditorAlias"].ToString());
+                    contentTypePropertyDTO.Type = propertyType;
+                    
+
+                    contentTypePropertyDTO.PropertyTypeAlias = propertyType.Name;
 
 					t.Properties.Add(contentTypePropertyDTO);
 				}

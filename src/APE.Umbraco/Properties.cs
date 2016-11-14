@@ -5,6 +5,8 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using Umbraco.Core.Models;
 using Umbraco.Web;
+using APE.Umbraco.Core.Interfaces;
+using APE.Umbraco.Core.Models;
 
 namespace APE.Umbraco
 {
@@ -17,24 +19,24 @@ namespace APE.Umbraco
 	{
 	}
 
-	/// <summary>
-	/// Represents a property of type <see cref="int"/>.
-	/// </summary>
-	[UmbracoPropertyId("1413AFCB-D19A-4173-8E9A-68288D2A73B8")]
-	[UmbracoPropertyId("UMBRACO.INTEGER")]
-	[UmbracoPropertyId("A52C7C1C-C330-476E-8605-D63D3B84B6A6")]
-	[UmbracoPropertyId("UMBRACO.RADIOBUTTONLIST")]
-	[UmbracoPropertyId("29E790E6-26B3-438A-B21F-908663A0B19E")]
-	[UmbracoPropertyId("UMBRACO.SLIDER")]
-	[UmbracoPropertyId("UMBRACO.USERPICKER")]
-	public class IntProperty : DocTypeProperty<int>
-	{
-	}
+    /// <summary>
+    /// Represents a property of type <see cref="int"/>.
+    /// </summary>
+    [UmbracoPropertyId("1413AFCB-D19A-4173-8E9A-68288D2A73B8")]
+    [UmbracoPropertyId("UMBRACO.INTEGER")]
+    [UmbracoPropertyId("A52C7C1C-C330-476E-8605-D63D3B84B6A6")]
+    [UmbracoPropertyId("UMBRACO.RADIOBUTTONLIST")]
+    [UmbracoPropertyId("29E790E6-26B3-438A-B21F-908663A0B19E")]
+    [UmbracoPropertyId("UMBRACO.SLIDER")]
+    [UmbracoPropertyId("UMBRACO.USERPICKER")]
+    public class IntProperty : DocTypeProperty<int>
+    {
+    }
 
-	/// <summary>
-	/// Represents a property of type <see cref="string"/>.
-	/// </summary>
-	[UmbracoPropertyId("67DB8357-EF57-493E-91AC-936D305E0F2A")]
+    /// <summary>
+    /// Represents a property of type <see cref="string"/>.
+    /// </summary>
+    [UmbracoPropertyId("67DB8357-EF57-493E-91AC-936D305E0F2A")]
 	[UmbracoPropertyId("UMBRACO.TEXTBOXMULTIPLE")]
 	[UmbracoPropertyId("A74EA9C9-8E18-4D2A-8CF6-73C6206C5DA6")]
 	[UmbracoPropertyId("UMBRACO.DROPDOWN")]
@@ -154,7 +156,8 @@ namespace APE.Umbraco
 
 			return UH.UmbracoHelper.TypedMedia(value);
 		}
-	}
+
+    }
 
 	/// <summary>
 	/// Represents a property of type <see cref="IPublishedContent"/>, containing a member.
@@ -176,8 +179,8 @@ namespace APE.Umbraco
 	/// </summary>
 	[UmbracoPropertyId("7E062C13-7C41-4AD9-B389-41D88AEEF87C")]
 	[UmbracoPropertyId("UMBRACO.MULTINODETREEPICKER")]
-	public class MultiNodeProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
-	{
+	public class MultiNodeProperty : DocTypeProperty<IEnumerable<IPublishedContent>>, IDocTypeProperty<IPublishedContent>
+    {
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
 			var prop = content.GetPropertyValue<string>(Alias, recursive, string.Empty);
@@ -201,7 +204,22 @@ namespace APE.Umbraco
 
 			return returnStuff;
 		}
-	}
+
+        public static Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        {                                        
+            if (preValues.Any(pv => pv.Alias == "maxNumber" && pv.Value == "1"))
+            {
+            return typeof(IDocTypeProperty<IPublishedContent>);
+            }
+                return typeof(MultiNodeProperty);
+        }
+
+        IPublishedContent IDocTypeProperty<IPublishedContent>.Map(IPublishedContent content, bool recursive)
+        {
+            return this.Map(content, recursive).FirstOrDefault();
+        }
+
+    }
 
 	/// <summary>
 	/// Represents a property of type <see cref="IEnumerable{}"/> of <see cref="IPublishedContent"/>, containing content.
@@ -221,8 +239,8 @@ namespace APE.Umbraco
 	/// Represents a property of type <see cref="IEnumerable{}"/> of <see cref="IPublishedContent"/>, containing media.
 	/// </summary>
 	[UmbracoPropertyId("UMBRACO.MULTIPLEMEDIAPICKER")]
-	public class MultiMediaProperty : DocTypeProperty<IEnumerable<IPublishedContent>>
-	{
+	public class MultiMediaProperty : DocTypeProperty<IEnumerable<IPublishedContent>>, IDocTypeProperty<IPublishedContent>
+    {
 		public override IEnumerable<IPublishedContent> Map(IPublishedContent content, bool recursive = false)
 		{
 			var prop = content.GetPropertyValue<string>(Alias, recursive, string.Empty);
@@ -230,7 +248,22 @@ namespace APE.Umbraco
 				? Enumerable.Empty<IPublishedContent>()
 				: UH.UmbracoHelper.TypedMedia(prop.Split(','));
 		}
-	}
+
+
+        public static Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        {
+            if (preValues.Any(pv=>pv.Alias == "multiPicker" && pv.Value == "1"))
+            {
+                return typeof(MultiMediaProperty);
+            }
+            return typeof(IDocTypeProperty<IPublishedContent>);
+        }
+
+        IPublishedContent IDocTypeProperty<IPublishedContent>.Map(IPublishedContent content, bool recursive)
+        {
+           return this.Map(content, recursive).FirstOrDefault();
+        }
+    }
 
 	/// <summary>
 	/// Represents a property of type <see cref="IEnumerable{}"/> of <see cref="IPublishedContent"/>, containing members.
