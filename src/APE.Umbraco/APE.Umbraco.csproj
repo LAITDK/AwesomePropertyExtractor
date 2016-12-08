@@ -279,6 +279,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AssemblyProxy.cs" />
     <Compile Include="Core\CSharpHelper.cs" />
     <Compile Include="Core\DBConnection.cs" />
     <Compile Include="Core\DTO\DictionaryItemDTO.cs" />

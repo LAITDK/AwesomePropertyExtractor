@@ -32,18 +32,24 @@ namespace APE.Umbraco.Core
 
         static Helpers()
         {
-            var dom = AppDomain.CreateDomain("APE-assembly-loader");
+            var currentAssembly = Assembly.GetExecutingAssembly();
+            var location = new FileInfo(currentAssembly.Location).Directory.FullName;
+            AppDomainSetup domaininfo = new AppDomainSetup();
+            domaininfo.ApplicationBase = location;
+            var adevidence = AppDomain.CurrentDomain.Evidence;
+
+            var dom = AppDomain.CreateDomain("APE-assembly-loader", adevidence, domaininfo);
             try
             {
-                var currentAssembly = Assembly.GetExecutingAssembly();
+                AssemblyProxy value = GetProxy(dom);
+
                 var classes = new List<Type>();
-                var location = new FileInfo(currentAssembly.Location).Directory.FullName;
                 var dlls = Directory.GetFiles(location, "*.dll", SearchOption.AllDirectories);
                 foreach (var dll in dlls)
                 {
                     try
                     {
-                        var assembly = Assembly.LoadFile(dll);
+                        var assembly = value.GetAssembly(dll);
                         classes.AddRange(GetClasses(assembly));
                     }
                     catch (Exception ex)
@@ -71,6 +77,16 @@ namespace APE.Umbraco.Core
                 AppDomain.Unload(dom);
             }
         }
+
+        private static AssemblyProxy GetProxy(AppDomain dom)
+        {
+            Type proxyType = typeof(AssemblyProxy);
+            var value = (AssemblyProxy)dom.CreateInstanceAndUnwrap(
+                proxyType.Assembly.FullName,
+                proxyType.FullName);
+            return value;
+        }
+
         public static Type GetPropertyType(string idOrAlias)
         {
             Type propType;
