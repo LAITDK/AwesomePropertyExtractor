@@ -215,7 +215,7 @@ namespace APE.Umbraco.Core
                     contentTypePropertyDTO.Type = propertyType;
                     
 
-                    contentTypePropertyDTO.PropertyTypeAlias = propertyType.Name;
+                    contentTypePropertyDTO.PropertyTypeAlias = propertyType.FullName;
 
 					t.Properties.Add(contentTypePropertyDTO);
 				}

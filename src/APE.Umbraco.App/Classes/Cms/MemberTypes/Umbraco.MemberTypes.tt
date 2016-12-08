@@ -49,6 +49,7 @@
 
 	var manager = TemplateFileManager.Create(this);
 	var docTypes = DBConnection.GetMemberTypes(dataDir, connectionSetting).ToList();
+	var preValueLookup = DBConnection.GetPreValueLookup(dataDir, connectionSetting);
 
 	manager.StartHeader();
 #>
@@ -115,6 +116,8 @@ namespace <#= namespaceHint #>
 		}
 <#		foreach (var property in docType.Properties.Where(x => !string.IsNullOrWhiteSpace(x.PropertyAlias)))
 		{
+			var preValues= preValueLookup[property.DataTypeId];
+			var propType= property.GetValueTypeName(preValues);
 #>
 
 		///	<summary>
@@ -127,7 +130,7 @@ namespace <#= namespaceHint #>
 		}
 #>
 		///	</summary>
-		public <#=property.PropertyTypeAlias#> <#=property.PropertyAliasText#> { get; private set; }
+		public <#=propType#> <#=property.PropertyAliasText#> { get; private set; }
 <#
 		}
 #>

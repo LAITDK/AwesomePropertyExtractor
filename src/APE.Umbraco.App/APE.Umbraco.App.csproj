@@ -390,6 +390,40 @@
     <Compile Include="Classes\Cms\DocTypes\UmbTextPage.cs">
       <DependentUpon>Umbraco.DocTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\File.cs">
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\Folder.cs">
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\Image.cs">
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\Int32.cs">
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\Namespace.cs">
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\SomePropertyTypes.cs">
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MediaTypes\Umbraco.MediaTypes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Umbraco.MediaTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MemberTypes\Int32.cs">
+      <DependentUpon>Umbraco.MemberTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MemberTypes\Member.cs">
+      <DependentUpon>Umbraco.MemberTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Cms\MemberTypes\Umbraco.MemberTypes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Umbraco.MemberTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
