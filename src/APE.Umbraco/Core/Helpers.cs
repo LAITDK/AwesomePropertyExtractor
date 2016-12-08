@@ -50,7 +50,8 @@ namespace APE.Umbraco.Core
                     try
                     {
                         var assembly = value.GetAssembly(dll);
-                        classes.AddRange(GetClasses(assembly));
+						if (assembly != null)
+	                        classes.AddRange(GetClasses(assembly));
                     }
                     catch (Exception ex)
                     {
