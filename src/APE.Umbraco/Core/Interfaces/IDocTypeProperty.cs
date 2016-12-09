@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APE.Umbraco.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace APE.Umbraco.Core.Interfaces
 
         TProp As<TProp>()
             where TProp : DocTypeProperty, new();
+        Type GetValueType(IEnumerable<PropertyPreValue> preValues);
     }
 
     public interface IDocTypeProperty<TType>: IDocTypeProperty

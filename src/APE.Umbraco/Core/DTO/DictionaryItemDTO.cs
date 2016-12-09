@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco.Core.DTO
 {
-	public class DictionaryItemDTO
+    [Serializable]
+    public class DictionaryItemDTO
 	{
 		public string Alias { get; set; }
 		public string Name { get; set; }

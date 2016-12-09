@@ -25,7 +25,7 @@
 <#@ include file="EF.Utility.CS.ttinclude" #>
 <#
 	var code = new CodeGenerationTools(this);
-	var namespaceHint = code.VsNamespaceSuggestion();
+	var namespaceHint = code.VsNamespaceSuggestion() ?? "DEBUG";
 
 	var hostServiceProvider = (IServiceProvider)this.Host;
 	var host = this.Host as ITextTemplatingEngineHost;
@@ -33,6 +33,7 @@
 	var project = dte.Solution.FindProjectItem(host.TemplateFile).ContainingProject;
 
 	var dataDir = host.ResolveAssemblyReference("$(ProjectDir)") + @"App_Data\";
+	var outDir = host.ResolveAssemblyReference("$(ProjectDir)$(OutputPath)");
 
 	System.Configuration.Configuration config = null;
 	
@@ -48,8 +49,13 @@
 	var connectionSetting = config.ConnectionStrings.ConnectionStrings["umbracoDbDSN"];
 
 	var manager = TemplateFileManager.Create(this);
-	var docTypes = DBConnection.GetMemberTypes(dataDir, connectionSetting).ToList();
-	var preValueLookup = DBConnection.GetPreValueLookup(dataDir, connectionSetting);
+	var connectionString = new APE.Umbraco.Core.Models.ConnectionStringContainer(){
+	ConnectionString = connectionSetting.ConnectionString,
+	ProviderName = connectionSetting.ProviderName,
+	DataDir=dataDir
+	};
+	using(var helpers = new Helpers(outDir,connectionString)){
+	var docTypes = helpers.GetMemberTypes().ToList();
 
 	manager.StartHeader();
 #>
@@ -95,8 +101,17 @@ foreach(var docType in docTypes)
 #>
 using System;
 using APE.Umbraco;
+using APE.Umbraco.Core.Interfaces;
+using Umbraco.Core.Models;
 namespace <#= namespaceHint #>
 {
+<# if (!string.IsNullOrEmpty(docType.ContentTypeDescription))
+	{#>
+	///	<summary>
+	///		<para>Description: <#=docType.ContentTypeDescription.Replace("\n", "\n\t///\t\t\t  ")#></para>
+	///	</summary>
+<#}
+#>
 	public partial class <#=docTypeKey#>
 	{
 		public <#=docTypeKey#>()
@@ -104,7 +119,7 @@ namespace <#= namespaceHint #>
 <#		foreach (var property in docType.Properties)
 		{
 #>
-			this.<#=property.PropertyAliasText#> = new <#=property.PropertyTypeAlias#>() { Alias = "<#=property.PropertyAlias#>" };
+			this.<#=property.PropertyAliasText#> = new <#=helpers.GetTypeName(property.EditorAlias)#>() { Alias = "<#=property.PropertyAlias#>" };
 <#
 		}
 #>
@@ -116,16 +131,17 @@ namespace <#= namespaceHint #>
 		}
 <#		foreach (var property in docType.Properties.Where(x => !string.IsNullOrWhiteSpace(x.PropertyAlias)))
 		{
-			var preValues= preValueLookup[property.DataTypeId];
-			var propType= property.GetValueTypeName(preValues);
+			var propType= helpers.GetValueTypeName(property.EditorAlias,property.DataTypeId);
 #>
+
+
 
 		///	<summary>
 		///		<para>Datatype: <#=property.PropertyType#>.</para>
 <#		if (!string.IsNullOrWhiteSpace(property.PropertyDescription))
 		{
 #>
-		///		<para>Description: <#=property.PropertyDescription#></para>
+		///		<para>Description: <#=property.PropertyDescription.Replace("\n", "\n\t\t///\t\t\t  ")#></para>
 <#
 		}
 #>
@@ -137,6 +153,7 @@ namespace <#= namespaceHint #>
 	}
 }
 <#
+}
 }
 manager.Process();
 #>

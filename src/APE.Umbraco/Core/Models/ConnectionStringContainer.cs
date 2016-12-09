@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace APE.Umbraco.Core.Models
 {
     [Serializable]
-    internal class DataTypePreValue : PropertyPreValue
+    public class ConnectionStringContainer
     {
-        public int DataTypeId { get; set; }
+        public string ConnectionString { get; set; }
+        public string ProviderName { get; set; }
+        public string DataDir { get; set; }
     }
 }

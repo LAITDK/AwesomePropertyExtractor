@@ -1,5 +1,7 @@
 ﻿using APE.Umbraco.Core.Interfaces;
+using APE.Umbraco.Core.Models;
 using System;
+using System.Collections.Generic;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
@@ -10,6 +12,10 @@ namespace APE.Umbraco
 		public virtual TType Map(IPublishedContent content, bool recursive = false)
 		{
 			return content.GetPropertyValue<TType>(this.Alias, recursive, default(TType));
+        }
+        public override Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        {
+            return this.GetType();
         }
 
     }
@@ -61,6 +67,8 @@ namespace APE.Umbraco
         {
             return prop.Alias;
         }
+
+        public abstract Type GetValueType(IEnumerable<PropertyPreValue> preValues);
 
     }
 }

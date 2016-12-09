@@ -31,6 +31,7 @@
 	var project = dte.Solution.FindProjectItem(host.TemplateFile).ContainingProject;
 
 	var dataDir = host.ResolveAssemblyReference("$(ProjectDir)") + @"App_Data\";
+	var outDir = host.ResolveAssemblyReference("$(ProjectDir)$(OutputPath)");
 	
 	System.Configuration.Configuration config = null;
 	
@@ -44,9 +45,16 @@
 	}
 
 	var connectionSetting = config.ConnectionStrings.ConnectionStrings["umbracoDbDSN"];
-
+	
 	var manager = TemplateFileManager.Create(this);
-	var dictionary = DBConnection.GetDictionary(dataDir,connectionSetting).ToList();
+
+	var connectionString = new APE.Umbraco.Core.Models.ConnectionStringContainer(){
+		ConnectionString = connectionSetting.ConnectionString,
+		ProviderName = connectionSetting.ProviderName,
+		DataDir=dataDir
+	};
+	using(var helpers = new Helpers(outDir,connectionString)){
+	var dictionary = helpers.GetDictionary().ToList();
 
 	manager.StartHeader();
 #>
@@ -93,5 +101,6 @@ namespace <#= namespaceHint #>
 	}
 }
 <#
+}
 	manager.Process();
 #>

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco.Core.DTO
 {
-	public class MediaTypeDTO : ContentTypeDTO
+    [Serializable]
+    public class MediaTypeDTO : ContentTypeDTO
 	{
 	}
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace APE.Umbraco.Core.DTO
 {
+    [Serializable]
 	public class ContentTypeDTO
 	{
 		public int Id { get; set; }
@@ -18,28 +19,14 @@ namespace APE.Umbraco.Core.DTO
 		public ICollection<ContentTypePropertyDTO> Properties { get; set; } = new List<ContentTypePropertyDTO>();
 	}
 
-	public class ContentTypePropertyDTO
+    [Serializable]
+    public class ContentTypePropertyDTO
 	{
         public int DataTypeId { get; internal set; }
+        public string EditorAlias { get; internal set; }
         public string PropertyAlias { get; set; }
 		public string PropertyAliasText { get; set; }
 		public string PropertyDescription { get; set; }
 		public string PropertyType { get; set; }
-		public string PropertyTypeAlias { get; set; }
-
-
-        internal Type Type { get; set; }
-
-        public string GetValueTypeName(IEnumerable<PropertyPreValue> preValues)
-        {
-            var type = Type;
-            var getTypeMethod = this.Type.GetMethod("GetValueType");
-            if (getTypeMethod != null)
-            {
-                type = (Type)getTypeMethod.Invoke(null, new object[] { preValues });
-            }
-
-            return Helpers.CSharpName(type);
-        }
     }
 }

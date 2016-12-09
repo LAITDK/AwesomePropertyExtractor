@@ -205,7 +205,7 @@ namespace APE.Umbraco
             return returnStuff;
         }
 
-        public static Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        public override Type GetValueType(IEnumerable<PropertyPreValue> preValues)
         {
             if (preValues.Any(pv => pv.Alias == "maxNumber" && pv.Value == "1"))
             {
@@ -249,8 +249,7 @@ namespace APE.Umbraco
                 : UH.UmbracoHelper.TypedMedia(prop.Split(','));
         }
 
-
-        public static Type GetValueType(IEnumerable<PropertyPreValue> preValues)
+        public override Type GetValueType(IEnumerable<PropertyPreValue> preValues)
         {
             if (preValues.Any(pv => pv.Alias == "multiPicker" && pv.Value != "1"))
             {
