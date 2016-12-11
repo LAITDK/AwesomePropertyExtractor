@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+<package 
+    xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>APE.Umbraco</id>
         <version>3.2.0-beta004</version>
@@ -10,17 +11,7 @@
         <projectUrl>https://github.com/LAITDK/AwesomePropertyExtractor</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Awesome Property Extractor, (APE), is a framework for extracting property values in a generic and simple way, primarily from umbraco and affiliated libraries.</description>
-        <releaseNotes>3.2.0-beta003:Major overhaul of the way DocType properties are loaded and identified.
-Assemblies are now loaded in an isolated app domain and GetValueType method is now mandatory and non-static on DocTypeProperties.
-Assemblies are now build against .NET 4.6.1
-        
-        3.2.0-beta003: Fixed issue where APE did not recognize custom property types. 
-            Fixed issue where mediatypes and member types did not support features introduced in 3.2.0.
-        3.2.0-beta002: Changed reference to Json.NET, for backward compatibility with older Umbraco installs.
-        3.2.0:Extended how doctype property types are generated, making them able to change their return type, based on configuration.Introduced two breaking changes:
-            Multi node tree picker property types, now returns single item when maxNumber == "1"Multi media picker, now returns single item, when multiPicker = "1"
-        3.1.0:Fixed minor namespace issue.        
-        3.0.3-alpha: Bug fixes. Multiline property descriptions will no longer cause invalid .cs to be generated.Added content type descriptions as xml comments on the classes.Cleaned up and added several DocTypeProperty&lt;...&gt; classes.		3.0.2-alpha:Bug fixes.NuGet feed test.3.0.1-alpha:Some bug fixes.3.0.0-alpha:Added support for content type compositions. This means some refactoring has been made where inheritance has been removed from the content types.Added support for media and member types.2.1.0:Fixed issue with our published content extension class, conflicted with Umbracos.Fixed issue where a doctype with dash or whitespace in alias made build errors.2.0.0:Initial release for Umbraco 7</releaseNotes>
+        <releaseNotes>3.2.0-beta003:Major overhaul of the way DocType properties are loaded and identified.Assemblies are now loaded in an isolated app domain and GetValueType method is now mandatory and non-static on DocTypeProperties.Assemblies are now build against .NET 4.6.1                3.2.0-beta003: Fixed issue where APE did not recognize custom property types.             Fixed issue where mediatypes and member types did not support features introduced in 3.2.0.        3.2.0-beta002: Changed reference to Json.NET, for backward compatibility with older Umbraco installs.        3.2.0:Extended how doctype property types are generated, making them able to change their return type, based on configuration.Introduced two breaking changes:            Multi node tree picker property types, now returns single item when maxNumber == "1"Multi media picker, now returns single item, when multiPicker = "1"        3.1.0:Fixed minor namespace issue.                3.0.3-alpha: Bug fixes. Multiline property descriptions will no longer cause invalid .cs to be generated.Added content type descriptions as xml comments on the classes.Cleaned up and added several DocTypeProperty&lt;...&gt; classes.		3.0.2-alpha:Bug fixes.NuGet feed test.3.0.1-alpha:Some bug fixes.3.0.0-alpha:Added support for content type compositions. This means some refactoring has been made where inheritance has been removed from the content types.Added support for media and member types.2.1.0:Fixed issue with our published content extension class, conflicted with Umbracos.Fixed issue where a doctype with dash or whitespace in alias made build errors.2.0.0:Initial release for Umbraco 7</releaseNotes>
         <tags>umbraco properties property T4 document types doctype cms</tags>
         <dependencies>
             <dependency id="UmbracoCms.Core" version="[7.0.1, 8.0)" />
@@ -32,7 +23,8 @@ Assemblies are now build against .NET 4.6.1
         <file src="..\src\APE.Umbraco.App\Classes\Cms\DocTypes\Umbraco.DocTypes.tt" target="content\Classes\Cms\DocTypes\Umbraco.DocTypes.tt" />
         <file src="..\src\APE.Umbraco.App\Classes\Cms\MediaTypes\Umbraco.MediaTypes.tt" target="content\Classes\Cms\MediaTypes\Umbraco.MediaTypes.tt" />
         <file src="..\src\APE.Umbraco.App\Classes\Cms\MemberTypes\Umbraco.MemberTypes.tt" target="content\Classes\Cms\MemberTypes\Umbraco.MemberTypes.tt" />
-        <file src="..\src\APE.Umbraco\bin\Release\APE.Umbraco.dll" target="lib\net46\APE.Umbraco.dll" />
+        <file src="..\Build\bin\4.5.1\APE.Umbraco.dll" target="lib\net45\APE.Umbraco.dll" />
+        <file src="..\Build\bin\4.6.1\APE.Umbraco.dll" target="lib\net46\APE.Umbraco.dll" />
         <file src="tools\install.ps1" target="tools\install.ps1" />
     </files>
 </package>

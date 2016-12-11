@@ -200,3 +200,6 @@ src/APE.Umbraco.App/Classes/Cms/MemberTypes/*.cs
 src/APE.Umbraco.App/App_Data/NuGetBackup/
 src/.vs/
 src/Ape.Umbraco.App/App_Data/cache/
+
+build/bin/
+*.nupkg
