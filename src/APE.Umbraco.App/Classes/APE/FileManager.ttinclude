@@ -329,13 +329,13 @@ public class TemplateFileManager
 		this._textTransformation.WriteLine("// Generated helper templates");
 		foreach (var item in templatePlaceholderList)
 		{
-			this._textTransformation.WriteLine("// " + this.GetDirectorySolutionRelative(item));		 
+			this._textTransformation.WriteLine("// " + this.GetFilePathRelativeToSolution(item));		 
 		}
 		
 		this._textTransformation.WriteLine("// Generated items");
 		foreach (var item in list)
 		{
-			this._textTransformation.WriteLine("// " + this.GetDirectorySolutionRelative(item.FileName)); 
+			this._textTransformation.WriteLine("// " + this.GetFilePathRelativeToSolution(item.FileName)); 
 		}
 	}
 	
@@ -398,6 +398,12 @@ public class TemplateFileManager
 		}
 		
 		return fullName.Substring(slnPos);
+	}
+	
+	private string GetFilePathRelativeToSolution(string fullName)
+	{
+		var solutionRoot = this.dte.Solution.FileName.Substring(0,this.dte.Solution.FileName.IndexOf(Path.GetFileName(this.dte.Solution.FileName)));
+		return fullName.Remove(0,solutionRoot.Length);
 	}
 	
     protected virtual void CreateFile(OutputFile file)
